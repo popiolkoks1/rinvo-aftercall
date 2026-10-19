@@ -329,3 +329,76 @@ The working tree is clean, so there's nothing new in `transcripts/` to commit. C
 ===== ASSISTANT (2026-10-19 11:45:14) =====
 [tool: Skill]
 
+===== ASSISTANT (2026-10-19 11:45:16) =====
+[tool: Bash] Export session transcripts
+
+===== ASSISTANT (2026-10-19 11:45:18) =====
+Export done. Before committing, I'm scanning the full history plus the new files for API keys and tokens.
+
+===== ASSISTANT (2026-10-19 11:45:22) =====
+[tool: Bash] Scan history and worktree for API keys
+
+===== ASSISTANT (2026-10-19 11:45:25) =====
+The scan is clean: no matches for your actual key or for common key patterns in history or the new files, and `.env` is gitignored. Committing, then creating the public repo and pushing.
+
+===== ASSISTANT (2026-10-19 11:45:27) =====
+[tool: Bash] Commit logs, create public GitHub repo, push main
+
+===== ASSISTANT (2026-10-19 11:45:58) =====
+Your repo is live and public: **https://github.com/popiolkoks1/rinvo-aftercall**
+
+- **Logs:** there was no new export when you asked; the last one (13:34) was already in the previous commit. So I ran the project's export skill. It added this review session as `transcripts/2026-10-19_36ee4e8f-7514-497a-a461-5ef296a6b13f.txt` and a few messages to the main build log. I committed them as `6fe606c` "logs: full AI session export".
+- **Secrets:** I checked all git history and every file being pushed, both for your real Gemini key and for common key formats. Nothing found, before or after the commit. `.env` is gitignored and wasn't pushed.
+- **Push:** `gh` was already installed and logged in as `popiolkoks1`, so no setup was needed. `main` is pushed and tracks `origin/main`.
+
+The exported log ends before this last exchange. To include it, run the export again and push once more.
+
+===== USER (2026-10-19 11:47:26) =====
+and where is the result in this repo?
+
+===== ASSISTANT (2026-10-19 11:47:34) =====
+The results for the Auto Tama call are in **`runs/2026-10-06_auto-tama/`**:
+
+| File | What it is |
+|---|---|
+| [report.html](https://github.com/popiolkoks1/rinvo-aftercall/blob/main/runs/2026-10-06_auto-tama/report.html) | The review page: actions by route, what the gate blocked, guardrails, recap draft |
+| [report.md](https://github.com/popiolkoks1/rinvo-aftercall/blob/main/runs/2026-10-06_auto-tama/report.md) | The same content as Markdown, readable directly on GitHub |
+| [drafts/recap_email.md](https://github.com/popiolkoks1/rinvo-aftercall/blob/main/runs/2026-10-06_auto-tama/drafts/recap_email.md) | Recap email draft to Kasia |
+| [drafts/internal_notes.md](https://github.com/popiolkoks1/rinvo-aftercall/blob/main/runs/2026-10-06_auto-tama/drafts/internal_notes.md), [drafts/meeting_brief.md](https://github.com/popiolkoks1/rinvo-aftercall/blob/main/runs/2026-10-06_auto-tama/drafts/meeting_brief.md) | Internal notes and the brief for the meeting with Paweł |
+| `tickets.csv`, `followups.ics`, `items.json` | Tickets, reminders as calendar events, and all extracted items |
+
+The output for the second call is in **`runs/2026-10-20_brightsmile-dental-clinics/`**, with the same files.
+
+**One catch:** GitHub shows `report.html` as source code, not as a page. A reviewer who clicks it sees raw HTML. So `report.md` is the link that works on GitHub; `report.html` only works if they clone the repo and open it locally.
+
+The README doesn't point to any of these files yet. A reviewer opening the repo won't know where to look. I'd add a short "Results" link block near the top of the README. Want me to do that?
+
+===== USER (2026-10-19 11:48:03) =====
+yes
+
+===== ASSISTANT (2026-10-19 11:48:06) =====
+[tool: Read] /Users/popiolkoks/rinvo-zadanie-rekrutacyjne/README.md
+
+===== ASSISTANT (2026-10-19 11:48:13) =====
+[tool: Edit] /Users/popiolkoks/rinvo-zadanie-rekrutacyjne/README.md
+
+===== ASSISTANT (2026-10-19 11:48:14) =====
+[tool: Bash] Commit README change and push
+
+===== ASSISTANT (2026-10-19 11:48:21) =====
+I added a "Results: start here" section to the README, right after the opening paragraph, and pushed it: https://github.com/popiolkoks1/rinvo-aftercall
+
+It links to:
+- the full review in `report.md`, which displays on GitHub
+- the recap email draft, with a pointer to its known errors
+- the internal notes and the brief for the meeting with Paweł
+- the tickets, calendar reminders and extracted items
+- `report.html`, with a note that it has to be opened locally, plus the command to open it
+- the second-call output, `PLAN.md`, `ASSUMPTIONS.md` and the AI logs
+
+The exported AI log still stops before this last exchange. If you want it in the repo, run the export again and push once more.
+
+===== USER (2026-10-19 11:49:57) =====
+<command-message>export-transcript</command-message>
+<command-name>/export-transcript</command-name>
+
