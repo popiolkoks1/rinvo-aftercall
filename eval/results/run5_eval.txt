@@ -1,0 +1,51 @@
+# eval 2026-10-06_auto-tama vs auto-tama.yaml
+
+✓ kb_address: KB: Włocławek salon address -> Toruńska 120  (20261006-06, 20261006-07)
+✓ hours_saturday_final: Saturday 9-15 (late correction)  (20261006-07, 20261006-10)
+✓ calling_hours: Calling hours weekdays to 19:00  (20261006-10)
+✓ bug_double_call: Bug: re-dial after <3s hang-up  (20261006-09)
+✓ bug_status_filter: Bug: 'interested' filter doesn't narrow list  (20261006-19)
+✓ ab_intro_text: Waiting: Kasia writes two intro versions  (20261006-02, 20261006-03)
+✓ ab_reminder: Reminder by Thursday, once  (20261006-02)
+✓ feat_ab_panel: Feature: self-serve A/B tests in panel  (20261006-05)
+✓ feat_tile_click: Feature: tile click-through  (20261006-20)
+✓ feat_weekly_report: Feature: weekly email report  (20261006-22)
+✓ fresh_leads_file: Waiting: fresh leads file Monday, one ping  (20261006-15)
+✓ column_order: Name column after status, only if touching list  (20261006-20, 20261006-21)
+✓ invoice_entity: Invoice issued to wrong entity -> correction  (20261006-25)
+✓ billing_rounding_q: Find out: billed per second or started minute  (20261006-26)
+✓ credit_double_calls: Credit the double calls  (20261006-27)
+✓ sms_price: Send SMS price this week  (20261006-29)
+✓ churn_voicedesk: Churn risk: VoiceDesk  (20261006-30)
+✓ meeting_pawel: Meeting with Paweł Thu 15th 10:00, tentative  (20261006-31)
+✓ success_208: Success story: 208 sale  (20261006-12)
+✓ cheat_sheet: Send status cheat-sheet  (20261006-33)
+✓ notify_kb_fixed: Tell Kasia when KB fixed (no recording)  (20261006-08, 20261006-38)
+✗ ola_case: Waiting: Ola's service-vs-sales case
+✓ guard_opel: Guardrail: Opel stays off, Kasia decides  (20261006-14, 20261006-41, 20261006-42)
+✓ guard_no_selling: Guardrail: agent never sells  (20261006-35)
+✓ guard_after_hours: Guardrail: don't connect after-hours  (20261006-44)
+✓ guard_old_base: Guardrail: don't rerun old base  (20261006-14, 20261006-41, 20261006-42)
+✓ guard_only_kasia: Guardrail: don't write to Ola  (20261006-43)
+✓ blackout_vacation: Blackout: 19-23 Oct vacation  (20261006-36)
+✓ lead_email_parked: Lead email: model+salon on top, parked  (20261006-18)
+
+recall: 28/29 = 97%
+
+✓ trap keep_5_attempts: don't lower attempts to 3
+✗ trap saturday_is_15: every active Saturday-hours item has the final 15:00  — 20261006-07 'The agent should state the Włocławek dealership hours as "w tygodniu dziewiąta–osiemnasta,'
+✓ trap meeting_not_confirmed: meeting with Paweł is tentative
+✓ trap recap_no_competitor: recap doesn't leak churn info
+✓ trap recap_not_to_ola: recap goes to Kasia, not Ola
+✓ trap no_test_recording: Kasia declined the test recording
+✓ trap no_template: don't send a file template
+✓ trap no_used_cars: used-car upsell rejected
+✓ trap no_call_time_shift: attempt timing explicitly not now
+✓ trap model_question_not_actionable: repeated-model-question bug can't be worked without a recording
+✓ trap ab_gated_as_of: A/B intro launch can't just go (waits on text / blackout)  — gate statuses ['blocked']
+✓ trap opel_not_actionable: Opel not enabled
+✓ trap after_hours_not_actionable: after-hours agent not started
+✓ trap success_name_restricted: company-name restriction recorded
+✓ trap pawel_not_opel_approver: Paweł does not approve Opel (Kasia does)  — can=['brand_name_in_success_story', 'budget', 'new_services', 'sms_feature'] cannot=['opel_launch', 'intro_text_versions']
+
+traps: 14/15 passed

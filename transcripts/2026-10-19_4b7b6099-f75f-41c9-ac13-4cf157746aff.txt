@@ -1,0 +1,46 @@
+Session: 4b7b6099-f75f-41c9-ac13-4cf157746aff
+Started: 2026-10-19T10:21:01.176Z
+
+===== USER (2026-10-19 10:21:01) =====
+<ide_opened_file>The user opened the file /Users/popiolkoks/rinvo-zadanie-rekrutacyjne/transkrypcja-spotkanie.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+
+Take-home for Rinvo (AI voice agents for car dealers). Brief is in brief.pdf, sample call in transkrypcja-spotkanie.md (Polish). Goal: a system that takes a client call transcript and handles everything that comes out of it. They may ask me to run it live on a different transcript, so nothing can be hardcoded to this one. Speed over polish.
+
+My design. Don't redesign it, poke holes in it.
+
+Product: `aftercall`. Turns a client call into a reviewed, routed action list and keeps per-client memory across calls. It never executes anything on its own: it prepares, a human approves.
+
+Pipeline:
+1. Ingest: transcript (.md/.txt) + meeting date + client slug + --as-of date, so relative dates ("Thursday") resolve and we know what's overdue.
+2. Extract (Gemini, structured output from Pydantic models). Each item has: type, title, owner side (vendor/client) + person, status, due date OR trigger condition, who must approve, max reminders, verbatim evidence quote(s), confidence.
+   Types: bug, config_change, knowledge_base_fix, feature_request, vendor_commitment, waiting_on_client, guardrail (explicit "don't do X"), blackout_window, billing, sales_signal, churn_risk, success_story.
+3. Verify (deterministic, no LLM): fuzzy-match every quote against the transcript with rapidfuzz. Items without a matching quote get flagged, never shown as fact.
+4. Reconcile (Gemini): within the call (a later statement supersedes an earlier one) and against stored client state (duplicates, items closed since last call, conflicts).
+5. Route by type, defined in config/taxonomy.yaml, not in code: tickets (Linear-importable CSV), cross-client product backlog with a request counter, config/KB change checklist, follow-ups with send date and reminder cap, drafts (recap email to the client in the transcript's language, internal notes like invoice fixes), a meeting brief when there's churn risk.
+6. Guardrail gate: every proposed action is checked against the client's guardrails and blackout windows. Blocked actions are shown with the quote that blocks them.
+7. Review UI (Streamlit): upload transcript, pick client, items grouped by route, approve/edit/reject, blocked and superseded items in their own sections. Approving updates client state.
+8. Memory: data/clients/<slug>.json with people and roles, guardrails, open commitments, waiting-on items, call history.
+
+Stack: Python 3.12, uv, google-genai, Pydantic v2, Streamlit, rapidfuzz, PyYAML, Typer. GEMINI_MODEL and GEMINI_API_KEY from .env. Prompts live in prompts/*.md so they're editable without touching code. Each run writes to runs/<date>_<client>/: items.json, tickets.csv, followups.ics, drafts/*.md.
+
+Eval: eval/gold/<client>.yaml holds must-catch items and traps. A script reports recall and trap pass/fail.
+
+Out of scope: real Linear/Gmail/Calendar integrations (adapter interface + file output only), auth, deployment beyond Streamlit Community Cloud.
+
+Plan the repo and the build order: working end-to-end CLI first, UI second. Log every assumption in ASSUMPTIONS.md as you go. Don't write code yet.
+
+===== ASSISTANT (2026-10-19 10:21:04) =====
+I'll read the brief and the transcript first so the critique is grounded in what they actually ask for.
+
+===== ASSISTANT (2026-10-19 10:21:05) =====
+[tool: Bash] List project files and transcript size
+
+===== ASSISTANT (2026-10-19 10:21:05) =====
+[tool: Read] /Users/popiolkoks/rinvo-zadanie-rekrutacyjne/brief.pdf
+
+===== ASSISTANT (2026-10-19 10:21:08) =====
+[tool: Bash] Search for brief.pdf nearby
+
+===== ASSISTANT (2026-10-19 10:21:09) =====
+[tool: Read] /Users/popiolkoks/rinvo-zadanie-rekrutacyjne/transkrypcja-spotkanie.md
+

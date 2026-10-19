@@ -1,0 +1,136 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//aftercall//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:20261006-03-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:[WAITING] Remind Kasia Malinowska to send agent intro texts
+DESCRIPTION:only if: Kasia has not sent the intro texts by 2026-10-08.
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-07-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:[WAITING] Notify Kasia Malinowska about Włocławek address update
+  and do not send test recording
+DESCRIPTION:waiting on 20261006-06 'Update Włocławek salon address in ag
+ ent knowledge base to Toruńska 120'
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-17-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:Remind Kasia Malinowska: Client to send fresh leads file for Toru
+ ń and Włocławek by Monday\, 2026-10-12 (max 1 reminder)
+DESCRIPTION:aftercall follow-up
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-18-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:Remind Kasia Malinowska: Receive specific misclassified lead examp
+ le from client
+DESCRIPTION:aftercall follow-up
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-26-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:Remind Kasia Malinowska: Receive assistance numbers and field list
+  for after-hours agent
+DESCRIPTION:aftercall follow-up
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-28-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:Correct invoice for September to reflect correct company name
+DESCRIPTION:aftercall follow-up
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-29-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:Clarify billing policy for calls under 3 seconds
+DESCRIPTION:aftercall follow-up
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-30-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:Credit client for erroneous double calls
+DESCRIPTION:aftercall follow-up
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-31-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:Send client count of erroneous double calls
+DESCRIPTION:aftercall follow-up
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-33-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:[NEEDS_APPROVAL] Send SMS pricing and example text to client
+DESCRIPTION:needs approval from Paweł
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-35-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:Chase confirmation (no invite until confirmed): Schedule meeting w
+ ith Paweł to discuss integration and Rinvo capabilities
+DESCRIPTION:aftercall follow-up
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-37-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:Prepare cheat sheet for sales team on lead statuses
+DESCRIPTION:aftercall follow-up
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-38-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:[BLOCKED] Chase confirmation (no invite until confirmed): Conduct 
+ online training for sales team on lead statuses
+DESCRIPTION:20261006-20 'Communicate only with Kasia Malinowska\, not Ola'
+ : forbids contact on [ola] — "I do Oli nie piszę\, ustalam wszystko z t
+ obą."
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-72-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:Remind Kasia Malinowska: Text for two intro versions (from Kasia M
+ alinowska)
+DESCRIPTION:aftercall follow-up
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-73-followup@aftercall
+DTSTAMP:20261019T133050Z
+DTSTART;TZID=Europe/Warsaw:20261019T090000
+DTEND;TZID=Europe/Warsaw:20261019T091500
+SUMMARY:Remind Kasia Malinowska: Recording or call ID for the specific inc
+ ident (from Kasia Malinowska)
+DESCRIPTION:aftercall follow-up
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,38 @@
+# Item type -> routes. An item gets one action per route.
+# Routes:
+#   ticket            -> tickets.csv (Linear import)
+#   change_checklist  -> checklist.md (config / KB / launch steps)
+#   backlog           -> cross-client product backlog
+#   followup          -> followups.md + followups.ics (our reminders and promised replies)
+#   internal_note     -> drafts/internal_notes.md
+#   meeting_brief     -> drafts/meeting_brief.md (only generated when a churn_risk item exists)
+#   memory            -> stored in client state only, no action
+# The recap email draft is always generated from every client-visible item.
+
+types:
+  bug:                {routes: [ticket]}
+  config_change:      {routes: [change_checklist]}
+  knowledge_base_fix: {routes: [change_checklist]}
+  feature_request:    {routes: [backlog]}
+  vendor_commitment:  {routes: [followup]}
+  waiting_on_client:  {routes: [followup]}
+  question_to_answer: {routes: [followup]}
+  meeting_request:    {routes: [followup, meeting_brief]}
+  billing:            {routes: [internal_note, followup]}
+  sales_signal:       {routes: [internal_note, meeting_brief]}
+  churn_risk:         {routes: [internal_note, meeting_brief]}
+  success_story:      {routes: [internal_note, meeting_brief]}
+  guardrail:          {routes: [memory]}
+  blackout_window:    {routes: [memory]}
+
+# Extra routes added by what we will actually do, regardless of type.
+# e.g. a waiting_on_client item whose action is "launch" also lands on the change checklist.
+action_kind_routes:
+  launch: [change_checklist]
+  enable: [change_checklist]
+
+# Default visibility when the extractor doesn't say otherwise.
+internal_types: [churn_risk, sales_signal, success_story]
+
+# Statuses that never produce actions.
+non_action_statuses: [declined, parked, done]

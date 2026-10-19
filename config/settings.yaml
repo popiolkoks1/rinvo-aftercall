@@ -1,0 +1,50 @@
+# Product-level settings. Nothing here is specific to one client or transcript.
+vendor:
+  org_names: [Rinvo]
+  email_domains: [rinvo.io]
+  # Product areas of the vendor's product. Guardrails only match actions in the same area,
+  # so "the agent must not sell" (agent_conversation) can't block a panel feature (panel_dashboard).
+  product_areas:
+    agent_conversation: what the voice agent says and does during calls (scripts, intro, questions, behaviour)
+    agent_knowledge: facts the agent tells end customers (addresses, opening hours, prices)
+    dialing_rules: when and how often the agent calls (calling hours, retries, attempt limits)
+    campaigns_and_leads: which contact lists, brands and locations the agent works on
+    panel_dashboard: the client's web panel (lists, filters, tiles, dashboard, self-serve tools)
+    notifications: emails / SMS sent after calls to client staff or end customers
+    reporting: scheduled reports and statistics
+    integrations: connections to the client's systems (CRM etc.)
+    billing: invoices, pricing, credits
+    account: meetings, training, relationship, documentation for the client
+    other: anything else
+# Recap leak check: words that must never appear in a client recap (plus names from internal items).
+recap:
+  leak_terms: [competitor, competition, konkuren, cheaper than, taniej, churn, switch to]
+# Gate tuning
+gate:
+  # Broad words that say nothing about what a guardrail protects; ignored when matching scope tags.
+  generic_tags: [agent, agents, campaign, campaigns, communication, client, customer, customers, system,
+                 process, call, calls, conversation_flow, general, other, vendor, feature, features]
+timezone: Europe/Warsaw
+verify:
+  # rapidfuzz partial_ratio on normalised text; below this a quote counts as "not found"
+  quote_threshold: 85
+llm:
+  temperature: 0.2
+  # Gemini 2.5 counts thinking tokens against max_output_tokens; cap thinking so JSON isn't truncated.
+  max_output_tokens: 65536
+  # Per-prompt thinking budget (tokens). Extraction needs it; drafts barely do. Lower = faster.
+  thinking_budget:
+    default: 2048
+    extract: 4096
+    extract_focus: 4096
+    reconcile: 2048
+    draft_recap: 0
+    draft_internal: 0
+  # Extraction runs as this many parallel calls over turn ranges, plus one focus pass.
+  extract_chunks: 4
+  focus_chunks: 2
+  cache_dir: .cache/llm
+paths:
+  runs: runs
+  clients: data/clients
+  backlog: data/backlog.json

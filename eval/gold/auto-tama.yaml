@@ -1,0 +1,57 @@
+# Gold for transkrypcja-spotkanie.md (Grupa Auto Tama, call 2026-10-06).
+# Written BEFORE looking at any pipeline output.
+# must_catch: an active item whose found quote overlaps `anchor` (and type in `types`, status in `status` if given).
+# traps: things a naive extractor gets wrong.
+min_recall: 0.8
+
+must_catch:
+  - {id: kb_address, desc: "KB: Włocławek salon address -> Toruńska 120", anchor: "Toruńska 120", types: [knowledge_base_fix]}
+  - {id: hours_saturday_final, desc: "Saturday 9-15 (late correction)", anchor: "Sobotę jednak zostaw do piętnastej", types: [config_change, knowledge_base_fix]}
+  - {id: calling_hours, desc: "Calling hours weekdays to 19:00", anchor: "To skróćcie do dziewiętnastej", types: [config_change]}
+  - {id: bug_double_call, desc: "Bug: re-dial after <3s hang-up", anchor: "Wczoraj i tak zadzwonił", types: [bug]}
+  - {id: bug_status_filter, desc: "Bug: 'interested' filter doesn't narrow list", anchor: "też nie zawęża", types: [bug]}
+  - {id: ab_intro_text, desc: "Waiting: Kasia writes two intro versions", anchor: "Tekst napiszę ja", types: [waiting_on_client, config_change, vendor_commitment]}
+  - {id: ab_reminder, desc: "Reminder by Thursday, once", anchor: "przypomnij mi", types: [waiting_on_client]}
+  - {id: feat_ab_panel, desc: "Feature: self-serve A/B tests in panel", anchor: "testy A/B wbudowane w panel", types: [feature_request]}
+  - {id: feat_tile_click, desc: "Feature: tile click-through", anchor: "klikania w kafelek nigdy nie zrobiliśmy", types: [feature_request]}
+  - {id: feat_weekly_report, desc: "Feature: weekly email report", anchor: "Raportu mailowego teraz nie mamy", types: [feature_request]}
+  - {id: fresh_leads_file, desc: "Waiting: fresh leads file Monday, one ping", anchor: "Powiedzmy poniedziałek", types: [waiting_on_client]}
+  - {id: column_order, desc: "Name column after status, only if touching list", anchor: "nazwisko zaraz po statusie", types: [config_change, feature_request, bug]}
+  - {id: invoice_entity, desc: "Invoice issued to wrong entity -> correction", anchor: "potrzebuje korekty", types: [billing]}
+  - {id: billing_rounding_q, desc: "Find out: billed per second or started minute", anchor: "czy liczymy od pierwszej sekundy", types: [question_to_answer, billing]}
+  - {id: credit_double_calls, desc: "Credit the double calls", anchor: "Odejmiemy je", types: [billing, vendor_commitment]}
+  - {id: sms_price, desc: "Send SMS price this week", anchor: "cenę wyślę w tym tygodniu", types: [vendor_commitment]}
+  - {id: churn_voicedesk, desc: "Churn risk: VoiceDesk", anchor: "była u Pawła firma VoiceDesk", types: [churn_risk]}
+  - {id: meeting_pawel, desc: "Meeting with Paweł Thu 15th 10:00, tentative", anchor: "Czwartek, piętnastego, dziesiąta", types: [meeting_request]}
+  - {id: success_208, desc: "Success story: 208 sale", anchor: "kupił Peugeota 208", types: [success_story]}
+  - {id: cheat_sheet, desc: "Send status cheat-sheet", anchor: "Ściągę ci wyślę", types: [vendor_commitment]}
+  - {id: notify_kb_fixed, desc: "Tell Kasia when KB fixed (no recording)", anchor: "Tylko napisz, jak będzie poprawione", types: [vendor_commitment]}
+  - {id: ola_case, desc: "Waiting: Ola's service-vs-sales case", anchor: "Jak znajdzie, prześlę", types: [waiting_on_client]}
+  - {id: guard_opel, desc: "Guardrail: Opel stays off, Kasia decides", anchor: "Opla nie włączam", types: [guardrail]}
+  - {id: guard_no_selling, desc: "Guardrail: agent never sells", anchor: "Jak zacznie sprzedawać, wyłączę go", types: [guardrail]}
+  - {id: guard_after_hours, desc: "Guardrail: don't connect after-hours", anchor: "nie podpinajcie", types: [guardrail]}
+  - {id: guard_old_base, desc: "Guardrail: don't rerun old base", anchor: "Starej bazy drugi raz nie puszczajcie", types: [guardrail]}
+  - {id: guard_only_kasia, desc: "Guardrail: don't write to Ola", anchor: "do Oli nie piszę", types: [guardrail]}
+  - {id: blackout_vacation, desc: "Blackout: 19-23 Oct vacation", anchor: "od dziewiętnastego do dwudziestego trzeciego mam urlop", types: [blackout_window]}
+  - {id: lead_email_parked, desc: "Lead email: model+salon on top, parked", anchor: "model i salon na górze", status: [parked, waiting]}
+
+traps:
+  - {id: keep_5_attempts, check: no_actionable_item_matching, types: [config_change], regex: "(three|3)\\s*(attempt|tr|retr)", desc: "don't lower attempts to 3"}
+  - {id: saturday_is_15, check: active_text_matches, types: [config_change, knowledge_base_fix], about: "saturday|sobot", regex: "15", desc: "every active Saturday-hours item has the final 15:00"}
+  # spec fix after run 2: added types (the anchor is Marek's reply; items quote Kasia's proposal one turn earlier)
+  - {id: meeting_not_confirmed, check: anchored_status, anchor: "Czwartek, piętnastego, dziesiąta", types: [meeting_request], status: [waiting, open], desc: "meeting with Paweł is tentative"}
+  - {id: recap_no_competitor, check: recap_excludes, regex: "VoiceDesk|konkuren|competitor|taniej|30 ?%", desc: "recap doesn't leak churn info"}
+  - {id: recap_not_to_ola, check: recap_excludes, regex: "(?m)^To:.*\\bOla\\b", desc: "recap goes to Kasia, not Ola"}
+  - {id: no_test_recording, check: no_actionable_item_matching, types: [vendor_commitment], regex: "test recording|send.{0,20}recording", desc: "Kasia declined the test recording"}
+  - {id: no_template, check: no_actionable_item_matching, types: [vendor_commitment], regex: "template", desc: "don't send a file template"}
+  - {id: no_used_cars, check: no_actionable_item_matching, types: [feature_request, config_change], regex: "used car", desc: "used-car upsell rejected"}
+  - {id: no_call_time_shift, check: no_actionable_item_matching, types: [config_change], regex: "lunch|midday|noon|shift.{0,20}attempt", desc: "attempt timing explicitly not now"}
+  # spec fix after run 2: restricted to bugs; no bug item at all is also fine (nothing to work on)
+  - {id: model_question_not_actionable, check: anchored_status, anchor: "bez nagrania nie znajdę", types: [bug], absent_ok: true, status: [waiting, declined, parked], desc: "repeated-model-question bug can't be worked without a recording"}
+  # spec fix after run 3: anchored on the launch request, not on "I'll write the text" (that's the waiting item, whose reminder may be clear)
+  - {id: ab_gated_as_of, check: anchored_gate_not_clear, anchor: "Puśćcie to na dwa dni albo na dwa miasta", desc: "A/B intro launch can't just go (waits on text / blackout)"}
+  - {id: opel_not_actionable, check: no_actionable_item_matching, types: [config_change, vendor_commitment], regex: "(enable|launch|connect|turn on).{0,20}opel", desc: "Opel not enabled"}
+  - {id: after_hours_not_actionable, check: no_actionable_item_matching, types: [config_change], regex: "after.?hours", desc: "after-hours agent not started"}
+  - {id: success_name_restricted, check: active_text_matches, types: [success_story], about: "208", regex: "name|nazw", desc: "company-name restriction recorded"}
+  # added after baseline run 1 (the LLM put 'opel' in Paweł's can_approve)
+  - {id: pawel_not_opel_approver, check: person_cannot_approve, person: "Paweł", tag_regex: "opel", desc: "Paweł does not approve Opel (Kasia does)"}
