@@ -2,6 +2,18 @@
 
 **aftercall turns a client call transcript into a reviewed, routed action list, and remembers each client across calls.** It reads a transcript in any language and any reasonable format and extracts every bug, config change, promise, client deliverable, refusal, deferral, guardrail and blackout window, each backed by a verbatim quote. It sorts them into tickets, a change checklist, a cross-client backlog and follow-ups. Every proposed action goes through a deterministic gate that checks the client's own rules ("don't enable Opel without me", "nothing new while I'm on vacation") and shows the quote behind every block. It drafts the recap email in the client's language, with no internal information in it. **Nothing runs on its own: aftercall prepares, a human approves.**
 
+## Results: start here
+
+Output for the attached transcript ([`transkrypcja-spotkanie.md`](transkrypcja-spotkanie.md)) is in [`runs/2026-10-06_auto-tama/`](runs/2026-10-06_auto-tama/):
+
+- [`report.md`](runs/2026-10-06_auto-tama/report.md): the full review (actions by route, what the gate blocked, guardrails, superseded items). It renders on GitHub.
+- [`drafts/recap_email.md`](runs/2026-10-06_auto-tama/drafts/recap_email.md): the recap email draft to the client, in Polish. Its known errors are listed under [Known issues](#known-issues).
+- [`drafts/internal_notes.md`](runs/2026-10-06_auto-tama/drafts/internal_notes.md) and [`drafts/meeting_brief.md`](runs/2026-10-06_auto-tama/drafts/meeting_brief.md): internal-only notes, and the brief for the meeting with Paweł.
+- [`tickets.csv`](runs/2026-10-06_auto-tama/tickets.csv), [`followups.ics`](runs/2026-10-06_auto-tama/followups.ics), [`items.json`](runs/2026-10-06_auto-tama/items.json): tickets, reminders as calendar events, and every extracted item with its quote.
+- [`report.html`](runs/2026-10-06_auto-tama/report.html): the same review as an interactive page with tabs, a filter and Approve/Reject buttons. GitHub shows it as source, so clone the repo and open it locally, or run `uv run aftercall view runs/2026-10-06_auto-tama`.
+
+A second, made-up call in English is in [`runs/2026-10-20_brightsmile-dental-clinics/`](runs/2026-10-20_brightsmile-dental-clinics/) (see [Runs on another call](#runs-on-another-call)). The design is in [`PLAN.md`](PLAN.md), every assumption is in [`ASSUMPTIONS.md`](ASSUMPTIONS.md), and the AI work logs are in [`transcripts/`](transcripts/).
+
 ## Pipeline
 
 ```mermaid
