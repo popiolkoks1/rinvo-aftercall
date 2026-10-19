@@ -1,0 +1,10 @@
+Title,Description,Priority,Labels,Status
+Reduce agent confirmation prompts for cancellations,"The agent asks patients to confirm cancellation three times, which is annoying. Rinvo needs two call IDs from the client to investigate and fix this issue.
+
+Evidence:
+> ""when a patient says ""cancel"", the agent asks them to confirm three times. That's annoying people.""
+> ""I can't really dig in without them, so I'll wait for those.""
+
+Gate: waiting — waiting on 20261020-03 'Send two call IDs for cancellation bug'
+
+aftercall item 20261020-02",High,"agent,cancellation,confirmation_flow",Triage

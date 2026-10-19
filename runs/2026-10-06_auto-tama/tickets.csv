@@ -1,24 +1,23 @@
 Title,Description,Priority,Labels,Status
-Investigate agent asking about model twice,"Investigate the issue where the virtual assistant reportedly stopped responding to the client and asked about the car model a second time during a conversation. No recording or specific call ID is available.
+Agent ignores client's initial speech and continues intro,"The virtual assistant starts its intro ('rozmowa jest nagrywana', 'wirtualna asystentka') without pausing for the client's initial speech, then apologizes and asks if the client is in the car. This makes clients realize it's a robot.
 
 Evidence:
-> ""W drugiej asystentka w środku rozmowy przestała odpowiadać na to, co klientka mówi, i drugi raz zapytała o model.""
-> ""A tej drugiej sytuacji, gdzie pyta drugi raz o model, bez nagrania nie znajdę. Ola nie dała numeru.""
+> ""Ja mówię „halo, jestem w samochodzie”, a ona jest już przy „rozmowa jest nagrywana”""
+> ""Złe jest to, że wcześniej nie ma żadnej przerwy, żebym mogła wejść jej w słowo.""
 
-Gate: waiting — waiting on 20261006-73 'Recording or call ID for the specific incident (from Kasia Malinowska)'
-
-aftercall item 20261006-04",High,"agent_conversation,model_inquiry",Triage
-Agent calls back immediately after 3-second hang-up,"The agent called back six times on the same campaign in the afternoon, despite the rule to not call back if the client hangs up within 3 seconds. The first instance was at 16:40, number ending in 14.
+aftercall item 20261006-01",High,"agent_intro,virtual_assistant,call_flow",Triage
+Agent calls twice after short disconnect,"The agent called six times on the same campaign in the afternoon, after a client disconnected within 3 seconds. Example: a call at 16:40 to a number ending in 14. This should not happen, as the rule is not to call a second time on the same day.
 
 Evidence:
 > ""Ustawialiśmy, że jak ktoś się rozłączy w ciągu trzech sekund, to agent nie dzwoni do niego drugi raz tego samego dnia.""
 > ""Wczoraj i tak zadzwonił. Sześć takich przypadków, ta sama kampania, po południu.""
-> ""Dobra, sprawdzę po spotkaniu na tej kampanii, nie będziemy teraz w tym grzebać.""
+> ""Pierwszy był o 16:40, numer kończy się na 14, słyszałam obie próby jedna po drugiej.""
 
-aftercall item 20261006-09",High,"3_second_hangup,redial_rule,campaign",Todo
-Fix 'interested' filter on contact list,"The 'interested' filter on the contact list in the panel does not correctly narrow down results, showing contacts with other statuses like 'received' or 'bought elsewhere'.
+aftercall item 20261006-11",High,"three_second_disconnect,double_call,campaign",Triage
+Fix 'zainteresowany' filter on contact list,"The 'zainteresowany' (interested) filter on the contact list in the panel does not correctly narrow down the list, showing all contacts instead of only interested ones.
 
 Evidence:
-> ""Na liście kontaktów filtr „zainteresowany” też nie zawęża. Pokazuje i odebranych, i nieodebranych, i „kupiłem gdzie indziej”.""
+> ""Na liście kontaktów filtr „zainteresowany” też nie zawęża.""
+> ""Pokazuje i odebranych, i nieodebranych, i „kupiłem gdzie indziej”.""
 
-aftercall item 20261006-21",High,"dashboard,contact_list,filter,interested_status",Triage
+aftercall item 20261006-26",High,"dashboard,filter,contact_list,interested_status",Triage

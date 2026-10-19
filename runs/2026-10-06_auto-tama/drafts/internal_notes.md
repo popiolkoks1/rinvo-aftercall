@@ -1,12 +1,12 @@
-# Internal Notes - Grupa Auto Tama Call (2026-10-06)
+# Internal Notes: Grupa Auto Tama Call (2026-10-06)
 
-For Billing and Invoices:
-- Michał: Issue a corrected invoice for September, changing the client name from 'Grupa Auto Tama sp. z o.o.' to 'Auto Tama Toruń sp. z o.o.' to match the signed agreement. Due by 2026-10-16.
-- Marek Rewoliński: Clarify if calls under 3 seconds are billed as a full minute or not.
-- Marek Rewoliński: Identify and credit Grupa Auto Tama for calls where the agent erroneously called the same number twice on the same day after a 3-second disconnect.
+**Billing and Invoices:**
+- The September invoice was issued to 'Grupa Auto Tama sp. z o.o.' but needs to be corrected to 'Auto Tama Toruń sp. z o.o.' as per the contract. (Owner: Michał, Due: 2026-10-16)
+- Deduct charges for calls where our agent erroneously called the same number twice in the same day after a three-second disconnect. (Owner: Marek Rewoliński)
 
-For Other Internal Actions:
-- Marek Rewoliński: All communication regarding lead validation and related issues should be directed to Kasia Malinowska, not Ola from sales.
-- Marek Rewoliński: Do not implement the after-hours agent functionality until Kasia Malinowska explicitly gives the green light. Do not trust requests from other client personnel regarding this.
-- Marek Rewoliński: Any new service or feature that incurs additional costs must be approved by Paweł before implementation.
-- Marek Rewoliński: The success story of the Peugeot 208 sale can be used immediately without the company name. Using the company name 'Grupa Auto Tama' requires Paweł's approval.
+**Other Internal:**
+- Marek Rewoliński needs to seek approval from Paweł to use the company name (Grupa Auto Tama) when sharing the Peugeot 208 success story. (Status: Waiting)
+- Marek Rewoliński can use the Peugeot 208 success story (lead from July, bot call Friday, sale Saturday) as an example without mentioning the company name. (Status: Open)
+- Marek must not contact Ola directly for lead validation email changes; all communication should be with Kasia Malinowska. (Owner: Marek)
+- Marek must not implement the after-hours agent functionality without explicit approval from Kasia Malinowska, even if assistance numbers and field lists are received or other client staff request it. (Owner: Marek)
+- Paweł cannot approve the Opel campaign launch or changes to the intro text. These require Kasia Malinowska's approval upon her return. (Owner: Marek Rewoliński)

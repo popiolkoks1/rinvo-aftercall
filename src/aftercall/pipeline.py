@@ -169,8 +169,9 @@ def write(r: RunResult) -> None:
     if r.recap:
         (d / "drafts" / "recap_email.md").write_text(
             f"To: {r.primary_contact}\nSubject: {r.recap.subject}\n\n{r.recap.body}\n"
-            + ("\n---\nChecks:\n" + "\n".join(f"- {f}" for f in r.draft_flags) + "\n" if r.draft_flags else "")
         )
+    if r.draft_flags:
+        (d / "drafts" / "recap_checks.md").write_text("# Recap checks\n\n" + "\n".join(f"- {f}" for f in r.draft_flags) + "\n")
     if r.internal:
         (d / "drafts" / "internal_notes.md").write_text(f"# {r.internal.internal_note.subject}\n\n{r.internal.internal_note.body}\n")
         if r.internal.meeting_brief:

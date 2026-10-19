@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>aftercall review</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1d2330;--muted:#6b7280;--line:#e5e7eb;--accent:#2f5bea;
+--ok:#15803d;--ok-bg:#dcfce7;--bad:#b91c1c;--bad-bg:#fee2e2;--wait:#a16207;--wait-bg:#fef3c7;
+--key:#6d28d9;--key-bg:#ede9fe;--time:#0e7490;--time-bg:#cffafe}
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--card);border-bottom:1px solid var(--line);padding:16px 24px;position:sticky;top:0;z-index:2}
+header h1{margin:0;font-size:18px}
+.meta{color:var(--muted);margin-top:2px}
+.stats{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.stat{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 12px}
+.stat b{font-size:16px;margin-right:4px}
+nav{display:flex;gap:4px;margin-top:12px;flex-wrap:wrap}
+nav button{border:0;background:none;padding:8px 12px;border-radius:6px;cursor:pointer;color:var(--muted);font-weight:500}
+nav button.on{background:var(--accent);color:#fff}
+.tools{display:flex;gap:8px;margin-top:10px}
+.tools input{flex:1;max-width:420px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font:inherit}
+main{padding:20px 24px;max-width:1100px}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:24px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:8px}
+.card.approved{border-left-color:var(--ok)}.card.rejected{border-left-color:var(--bad);opacity:.55}
+.row{display:flex;align-items:flex-start;gap:10px}
+.title{flex:1;font-weight:600}
+.sub{color:var(--muted);font-size:12px;margin-top:2px}
+.badge{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.clear{color:var(--ok);background:var(--ok-bg)}.blocked{color:var(--bad);background:var(--bad-bg)}
+.waiting{color:var(--wait);background:var(--wait-bg)}.needs_approval{color:var(--key);background:var(--key-bg)}
+.not_before{color:var(--time);background:var(--time-bg)}.neutral{color:var(--muted);background:var(--bg)}
+.btns button{border:1px solid var(--line);background:var(--card);border-radius:6px;padding:3px 10px;cursor:pointer;font:inherit;font-size:12px}
+.btns button.a.on{background:var(--ok);color:#fff;border-color:var(--ok)}
+.btns button.r.on{background:var(--bad);color:#fff;border-color:var(--bad)}
+details{margin-top:8px}summary{cursor:pointer;color:var(--accent);font-size:12px}
+blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--line);color:#374151;background:var(--bg);border-radius:0 4px 4px 0}
+.reason{font-size:12px;margin:4px 0}.reason.bad{color:var(--bad)}
+.tag{display:inline-block;font-size:11px;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 2px 0 0;color:var(--muted)}
+pre{white-space:pre-wrap;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;font:13px/1.55 ui-monospace,Menlo,monospace}
+.warn{background:var(--wait-bg);color:var(--wait);border-radius:6px;padding:6px 10px;margin:4px 0;font-size:12px}
+.empty{color:var(--muted);font-style:italic}
+s{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <h1 id="h"></h1><div class="meta" id="meta"></div>
+  <div class="stats" id="stats"></div>
+  <nav id="tabs"></nav>
+  <div class="tools"><input id="q" placeholder="Filter by title, detail, tag, quote…"><span class="meta" id="review"></span></div>
+</header>
+<main id="main"></main>
+<script>
+const D = {"client": "BrightSmile Dental Clinics", "slug": "brightsmile-dental-clinics", "meeting_date": "2026-10-20", "as_of": "2026-10-21", "transcript": "/Users/popiolkoks/rinvo-zadanie-rekrutacyjne/examples/brightsmile_call.txt", "language": "en", "primary_contact": "Priya Shah", "people": [{"name": "Tom Harper", "side": "vendor", "role": null, "email": null, "present_on_call": true, "can_approve": [], "cannot_approve": []}, {"name": "Priya Shah", "side": "client", "role": "front desk manager", "email": null, "present_on_call": true, "can_approve": [], "cannot_approve": []}, {"name": "Dr. Lewis", "side": "client", "role": "manager", "email": null, "present_on_call": false, "can_approve": ["manchester_clinic"], "cannot_approve": []}], "items": [{"ref": "a1", "type": "knowledge_base_fix", "title": "Update Leeds clinic closing time to 7pm", "detail": "The agent currently tells patients the Leeds clinic closes at 6pm. It should be updated to 7pm for weekdays.", "owner_side": "vendor", "owner_person": "Tom Harper", "status": "open", "action_kind": "update_kb", "product_area": "agent_knowledge", "new_for_end_customers": false, "client_requested": true, "vendor_commitment_level": "committed", "blocked_on_input": null, "blocked_on_person": null, "scope_tags": ["leeds_clinic", "closing_hours"], "visibility": "client", "due_phrase": "today", "due": "2026-10-20", "earliest_start_phrase": null, "earliest_start": null, "trigger_condition": null, "depends_on": [], "related_refs": [], "superseded_by_ref": null, "approver": null, "max_reminders": null, "forbids_action_kinds": [], "window_start": null, "window_end": null, "lifted_by": null, "applies_to_all_work": false, "demand_signal": false, "evidence_quotes": ["it keeps telling patients our Leeds clinic closes at 6pm. We moved to 7pm on weekdays last month.", "I'll update it to 7pm today."], "confidence": 1.0, "id": "20261020-01", "evidence": [{"quote": "it keeps telling patients our Leeds clinic closes at 6pm. We moved to 7pm on weekdays last month.", "found": true, "score": 100.0, "speaker": "Speaker 2", "turn": 3, "source": "speech"}, {"quote": "I'll update it to 7pm today.", "found": true, "score": 100.0, "speaker": "Speaker 1", "turn": 4, "source": "speech"}], "flags": [], "amended_from": null, "state_match": null}, {"ref": "a2", "type": "bug", "title": "Reduce agent confirmation prompts for cancellations", "detail": "The agent asks patients to confirm cancellation three times, which is annoying. Rinvo needs two call IDs from the client to investigate and fix this issue.", "owner_side": "vendor", "owner_person": "Tom Harper", "status": "waiting", "action_kind": "fix", "product_area": "agent_conversation", "new_for_end_customers": false, "client_requested": true, "vendor_commitment_level": "will_look_into", "blocked_on_input": "Two call IDs for examples of the issue.", "blocked_on_person": "Priya Shah", "scope_tags": ["agent", "cancellation", "confirmation_flow"], "visibility": "client", "due_phrase": null, "due": null, "earliest_start_phrase": null, "earliest_start": null, "trigger_condition": null, "depends_on": ["a3"], "related_refs": ["a3"], "superseded_by_ref": null, "approver": null, "max_reminders": null, "forbids_action_kinds": [], "window_start": null, "window_end": null, "lifted_by": null, "applies_to_all_work": false, "demand_signal": false, "evidence_quotes": ["when a patient says \"cancel\", the agent asks them to confirm three times. That's annoying people.", "I can't really dig in without them, so I'll wait for those."], "confidence": 1.0, "id": "20261020-02", "evidence": [{"quote": "when a patient says \"cancel\", the agent asks them to confirm three times. That's annoying people.", "found": true, "score": 100.0, "speaker": "Speaker 2", "turn": 5, "source": "speech"}, {"quote": "I can't really dig in without them, so I'll wait for those.", "found": true, "score": 100.0, "speaker": "Speaker 1", "turn": 8, "source": "speech"}], "flags": [], "amended_from": null, "state_match": null}, {"ref": "a3", "type": "waiting_on_client", "title": "Send two call IDs for cancellation bug", "detail": "Priya Shah will email two call IDs to Tom Harper by Friday, October 23, 2026, to help investigate the agent's triple confirmation for cancellations.", "owner_side": "client", "owner_person": "Priya Shah", "status": "open", "action_kind": "send", "product_area": "agent_conversation", "new_for_end_customers": false, "client_requested": true, "vendor_commitment_level": "no_commitment", "blocked_on_input": null, "blocked_on_person": null, "scope_tags": ["call_ids", "cancellation", "priya"], "visibility": "client", "due_phrase": "by Friday", "due": "2026-10-23", "earliest_start_phrase": null, "earliest_start": null, "trigger_condition": null, "depends_on": [], "related_refs": ["a2"], "superseded_by_ref": null, "approver": null, "max_reminders": null, "forbids_action_kinds": [], "window_start": null, "window_end": null, "lifted_by": null, "applies_to_all_work": false, "demand_signal": false, "evidence_quotes": ["I'll email you two call IDs by Friday."], "confidence": 1.0, "id": "20261020-03", "evidence": [{"quote": "I'll email you two call IDs by Friday.", "found": true, "score": 100.0, "speaker": "Speaker 2", "turn": 7, "source": "speech"}], "flags": [], "amended_from": null, "state_match": null}, {"ref": "a4", "type": "feature_request", "title": "Agent to offer next free slot on cancellation", "detail": "The client requests a feature where the agent offers the next available appointment slot when a patient cancels, acting as a rebooking flow.", "owner_side": "vendor", "owner_person": null, "status": "open", "action_kind": "build", "product_area": "agent_conversation", "new_for_end_customers": true, "client_requested": true, "vendor_commitment_level": "will_look_into", "blocked_on_input": null, "blocked_on_person": null, "scope_tags": ["rebooking", "cancellation", "agent_flow"], "visibility": "client", "due_phrase": null, "due": null, "earliest_start_phrase": null, "earliest_start": null, "trigger_condition": null, "depends_on": [], "related_refs": [], "superseded_by_ref": null, "approver": null, "max_reminders": null, "forbids_action_kinds": [], "window_start": null, "window_end": null, "lifted_by": null, "applies_to_all_work": false, "demand_signal": false, "evidence_quotes": ["could the agent offer the next free slot when someone cancels? Like a rebooking flow.", "I'll log it as a feature request, no date yet."], "confidence": 1.0, "id": "20261020-04", "evidence": [{"quote": "could the agent offer the next free slot when someone cancels? Like a rebooking flow.", "found": true, "score": 100.0, "speaker": "Speaker 2", "turn": 9, "source": "speech"}, {"quote": "I'll log it as a feature request, no date yet.", "found": true, "score": 100.0, "speaker": "Speaker 1", "turn": 10, "source": "speech"}], "flags": [], "amended_from": null, "state_match": null}, {"ref": "a5", "type": "guardrail", "title": "Do not call Manchester clinic patients", "detail": "Rinvo must not start calling patients for the Manchester clinic until Dr. Lewis provides explicit approval.", "owner_side": "client", "owner_person": "Dr. Lewis", "status": "open", "action_kind": "none", "product_area": "campaigns_and_leads", "new_for_end_customers": true, "client_requested": true, "vendor_commitment_level": "no_commitment", "blocked_on_input": "Approval from Dr. Lewis to start calling Manchester clinic patients.", "blocked_on_person": "Dr. Lewis", "scope_tags": ["manchester_clinic", "patient_calls", "dr_lewis"], "visibility": "client", "due_phrase": null, "due": null, "earliest_start_phrase": null, "earliest_start": null, "trigger_condition": null, "depends_on": [], "related_refs": [], "superseded_by_ref": null, "approver": "Dr. Lewis", "max_reminders": null, "forbids_action_kinds": ["launch", "contact"], "window_start": null, "window_end": null, "lifted_by": "Dr. Lewis", "applies_to_all_work": false, "demand_signal": false, "evidence_quotes": ["please don't start calling the Manchester clinic patients yet. Our manager, Dr. Lewis, needs to sign that off first.", "Understood, Manchester stays off until you confirm Dr. Lewis approved it."], "confidence": 1.0, "id": "20261020-05", "evidence": [{"quote": "please don't start calling the Manchester clinic patients yet. Our manager, Dr. Lewis, needs to sign that off first.", "found": true, "score": 100.0, "speaker": "Speaker 2", "turn": 11, "source": "speech"}, {"quote": "Understood, Manchester stays off until you confirm Dr. Lewis approved it.", "found": true, "score": 100.0, "speaker": "Speaker 1", "turn": 12, "source": "speech"}], "flags": [], "amended_from": null, "state_match": null}, {"ref": "a6", "type": "blackout_window", "title": "No new launches while Priya Shah is away", "detail": "No new features or campaigns that affect end customers should go live between November 2, 2026, and November 9, 2026, inclusive, as Priya Shah will be absent.", "owner_side": "vendor", "owner_person": null, "status": "open", "action_kind": "none", "product_area": "other", "new_for_end_customers": false, "client_requested": true, "vendor_commitment_level": "committed", "blocked_on_input": null, "blocked_on_person": null, "scope_tags": ["priya", "launches"], "visibility": "client", "due_phrase": null, "due": null, "earliest_start_phrase": null, "earliest_start": null, "trigger_condition": null, "depends_on": [], "related_refs": [], "superseded_by_ref": null, "approver": null, "max_reminders": null, "forbids_action_kinds": ["launch"], "window_start": "2026-11-02", "window_end": "2026-11-09", "lifted_by": "Priya Shah", "applies_to_all_work": true, "demand_signal": false, "evidence_quotes": ["I'm off from the 2nd to the 9th of November, so nothing new goes live while I'm away.", "Noted, no launches that week."], "confidence": 1.0, "id": "20261020-06", "evidence": [{"quote": "I'm off from the 2nd to the 9th of November, so nothing new goes live while I'm away.", "found": true, "score": 100.0, "speaker": "Speaker 2", "turn": 13, "source": "speech"}, {"quote": "Noted, no launches that week.", "found": true, "score": 100.0, "speaker": "Speaker 1", "turn": 14, "source": "speech"}], "flags": [], "amended_from": null, "state_match": null}, {"ref": "a7", "type": "billing", "title": "Correct VAT number on October invoice", "detail": "The October invoice has an incorrect VAT number. Rinvo needs to provide a corrected invoice to BrightSmile's accounts team by next week (October 30, 2026).", "owner_side": "vendor", "owner_person": "finance person", "status": "open", "action_kind": "send", "product_area": "billing", "new_for_end_customers": false, "client_requested": true, "vendor_commitment_level": "committed", "blocked_on_input": null, "blocked_on_person": null, "scope_tags": ["october_invoice", "vat_number", "accounts_team"], "visibility": "client", "due_phrase": "next week", "due": "2026-10-30", "earliest_start_phrase": null, "earliest_start": null, "trigger_condition": null, "depends_on": [], "related_refs": [], "superseded_by_ref": null, "approver": null, "max_reminders": null, "forbids_action_kinds": [], "window_start": null, "window_end": null, "lifted_by": null, "applies_to_all_work": false, "demand_signal": false, "evidence_quotes": ["the October invoice had the wrong VAT number. Our accounts team needs a corrected one.", "I'll pass it to our finance person today, corrected invoice next week."], "confidence": 1.0, "id": "20261020-07", "evidence": [{"quote": "the October invoice had the wrong VAT number. Our accounts team needs a corrected one.", "found": true, "score": 100.0, "speaker": "Speaker 2", "turn": 15, "source": "speech"}, {"quote": "I'll pass it to our finance person today, corrected invoice next week.", "found": true, "score": 100.0, "speaker": "Speaker 1", "turn": 16, "source": "speech"}], "flags": [], "amended_from": null, "state_match": null}, {"ref": "f0_1", "type": "guardrail", "title": "Do not call Manchester clinic patients", "detail": "Do not start calling patients for the Manchester clinic until Dr. Lewis has signed off on it. This action is blocked until client confirmation.", "owner_side": "vendor", "owner_person": null, "status": "open", "action_kind": "none", "product_area": "campaigns_and_leads", "new_for_end_customers": true, "client_requested": true, "vendor_commitment_level": "committed", "blocked_on_input": "Dr. Lewis's sign-off confirmation", "blocked_on_person": "Priya Shah", "scope_tags": ["manchester_clinic", "dr_lewis"], "visibility": "client", "due_phrase": null, "due": null, "earliest_start_phrase": null, "earliest_start": null, "trigger_condition": "Dr. Lewis's approval confirmed by Priya Shah", "depends_on": [], "related_refs": [], "superseded_by_ref": "a5", "approver": "Dr. Lewis", "max_reminders": null, "forbids_action_kinds": ["launch"], "window_start": null, "window_end": null, "lifted_by": "Priya Shah", "applies_to_all_work": false, "demand_signal": false, "evidence_quotes": ["please don't start calling the Manchester clinic patients yet", "Our manager, Dr. Lewis, needs to sign that off first", "Manchester stays off until you confirm Dr. Lewis approved it"], "confidence": 1.0, "id": "20261020-08", "evidence": [{"quote": "please don't start calling the Manchester clinic patients yet", "found": true, "score": 100.0, "speaker": "Speaker 2", "turn": 11, "source": "speech"}, {"quote": "Our manager, Dr. Lewis, needs to sign that off first", "found": true, "score": 100.0, "speaker": "Speaker 2", "turn": 11, "source": "speech"}, {"quote": "Manchester stays off until you confirm Dr. Lewis approved it", "found": true, "score": 100.0, "speaker": "Speaker 1", "turn": 12, "source": "speech"}], "flags": ["found in focus pass", "superseded (reconcile): duplicate"], "amended_from": null, "state_match": null}, {"ref": "f0_2", "type": "blackout_window", "title": "No new launches while Priya Shah is away", "detail": "No new features or campaigns should go live between November 2nd, 2026 and November 9th, 2026, as Priya Shah will be off.", "owner_side": "vendor", "owner_person": null, "status": "open", "action_kind": "none", "product_area": "other", "new_for_end_customers": true, "client_requested": true, "vendor_commitment_level": "committed", "blocked_on_input": null, "blocked_on_person": null, "scope_tags": ["priya_shah"], "visibility": "client", "due_phrase": null, "due": null, "earliest_start_phrase": null, "earliest_start": null, "trigger_condition": null, "depends_on": [], "related_refs": [], "superseded_by_ref": "a6", "approver": null, "max_reminders": null, "forbids_action_kinds": ["launch"], "window_start": "2026-11-02", "window_end": "2026-11-09", "lifted_by": null, "applies_to_all_work": true, "demand_signal": false, "evidence_quotes": ["I'm off from the 2nd to the 9th of November", "nothing new goes live while I'm away", "Noted, no launches that week"], "confidence": 1.0, "id": "20261020-09", "evidence": [{"quote": "I'm off from the 2nd to the 9th of November", "found": true, "score": 100.0, "speaker": "Speaker 2", "turn": 13, "source": "speech"}, {"quote": "nothing new goes live while I'm away", "found": true, "score": 100.0, "speaker": "Speaker 2", "turn": 13, "source": "speech"}, {"quote": "Noted, no launches that week", "found": true, "score": 100.0, "speaker": "Speaker 1", "turn": 14, "source": "speech"}], "flags": ["found in focus pass", "duplicate of 20261020-06 (deterministic, similarity 78)"], "amended_from": null, "state_match": null}], "actions": [{"id": "20261020-01/change_checklist", "item_id": "20261020-01", "route": "change_checklist", "kind": "update_kb", "title": "Update Leeds clinic closing time to 7pm", "date": "2026-10-20", "recipient": null, "scope_tags": ["leeds_clinic", "closing_hours"], "gate": {"status": "clear", "exec_date": "2026-10-21", "reasons": [], "blocked_by": [], "notes": []}}, {"id": "20261020-02/ticket", "item_id": "20261020-02", "route": "ticket", "kind": "fix", "title": "Look into (no fix promised): Reduce agent confirmation prompts for cancellations", "date": null, "recipient": null, "scope_tags": ["agent", "cancellation", "confirmation_flow"], "gate": {"status": "waiting", "exec_date": "2026-10-21", "reasons": ["waiting on 20261020-03 'Send two call IDs for cancellation bug'"], "blocked_by": [], "notes": []}}, {"id": "20261020-03/followup", "item_id": "20261020-03", "route": "followup", "kind": "contact", "title": "Remind Priya Shah: Send two call IDs for cancellation bug", "date": "2026-10-23", "recipient": "Priya Shah", "scope_tags": ["call_ids", "cancellation", "priya", "priya"], "gate": {"status": "clear", "exec_date": "2026-10-23", "reasons": [], "blocked_by": [], "notes": []}}, {"id": "20261020-04/backlog", "item_id": "20261020-04", "route": "backlog", "kind": "build", "title": "Agent to offer next free slot on cancellation", "date": null, "recipient": null, "scope_tags": ["rebooking", "cancellation", "agent_flow"], "gate": {"status": "clear", "exec_date": "2026-10-21", "reasons": [], "blocked_by": [], "notes": []}}, {"id": "20261020-04/change_checklist", "item_id": "20261020-04", "route": "change_checklist", "kind": "build", "title": "Look into (no fix promised): Agent to offer next free slot on cancellation", "date": null, "recipient": null, "scope_tags": ["rebooking", "cancellation", "agent_flow"], "gate": {"status": "clear", "exec_date": "2026-10-21", "reasons": [], "blocked_by": [], "notes": []}}, {"id": "20261020-07/internal_note", "item_id": "20261020-07", "route": "internal_note", "kind": "none", "title": "Correct VAT number on October invoice", "date": "2026-10-30", "recipient": null, "scope_tags": ["october_invoice", "vat_number", "accounts_team"], "gate": {"status": "clear", "exec_date": "2026-10-30", "reasons": [], "blocked_by": [], "notes": []}}, {"id": "20261020-07/followup", "item_id": "20261020-07", "route": "followup", "kind": "send", "title": "Correct VAT number on October invoice", "date": "2026-10-30", "recipient": null, "scope_tags": ["october_invoice", "vat_number", "accounts_team"], "gate": {"status": "clear", "exec_date": "2026-10-30", "reasons": [], "blocked_by": [], "notes": []}}, {"id": "recap/email", "item_id": "recap", "route": "recap", "kind": "send", "title": "Send call recap to Priya Shah", "date": "2026-10-20", "recipient": "Priya Shah", "scope_tags": ["recap", "priya"], "gate": {"status": "clear", "exec_date": "2026-10-21", "reasons": [], "blocked_by": [], "notes": []}}], "draft_flags": [], "warnings": ["dedupe: 20261020-09 'No new launches while Priya Shah is away' merged into 20261020-06 'No new launches while Priya Shah is away' (78)"], "drafts": {"recap_email": "To: Priya Shah\nSubject: Follow-up from our call today\n\nHi Priya,\n\nThanks for the call today. Here's a summary of what we discussed:\n\nWhat we'll do:\n- Update Leeds clinic closing time to 7pm today, 20 October\n- Provide a corrected October invoice to BrightSmile's accounts team by next week\n\nWhat we'll look into:\n- Reduce agent confirmation prompts for cancellations\n- Agent to offer next free slot on cancellation\n\nWhat we're waiting for from you:\n- Send two call IDs for cancellation bug by Friday, 23 October\n\nWhat we're not doing / on hold:\n- Do not call Manchester clinic patients until Dr. Lewis provides explicit approval\n- No new launches between 2 November and 9 November, inclusive\n\nBest regards,\nTom\n", "internal_notes": "# BrightSmile Dental Clinics Call Notes (2026-10-20)\n\nTeam, please see the following notes from our call with BrightSmile Dental Clinics:\n\nBilling and Invoices:\n- The October invoice has an incorrect VAT number. Our finance person needs to provide a corrected invoice to BrightSmile's accounts team by next week (October 30, 2026).\n\nNo other internal actions were identified from this call.\n", "meeting_brief": ""}};
+const items = Object.fromEntries(D.items.map(i => [i.id, i]));
+const byRef = Object.fromEntries(D.items.map(i => [i.ref, i]));
+const active = i => !i.superseded_by_ref && i.evidence.some(e => e.found);
+const state = {};  // card id -> "approved" | "rejected"
+const ROUTES = [["ticket","Tickets"],["change_checklist","Config / KB / launch checklist"],["backlog","Product backlog"],
+  ["followup","Follow-ups"],["internal_note","Internal notes"],["meeting_brief","Meeting brief"],["recap","Client recap"]];
+const LABEL = {clear:"clear",blocked:"blocked",waiting:"waiting",needs_approval:"needs approval",not_before:"not before"};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let tab = "actions";
+
+document.getElementById("h").textContent = `${D.client} · call review`;
+document.getElementById("meta").textContent =
+  `Call ${D.meeting_date} · as of ${D.as_of} · primary contact ${D.primary_contact} · language ${D.language}`;
+const blocked = D.actions.filter(a => a.gate.status === "blocked");
+document.getElementById("stats").innerHTML = [
+  [D.items.length, "items"], [D.items.filter(active).length, "active"], [D.actions.length, "actions"],
+  [blocked.length, "blocked"], [D.items.filter(i => i.superseded_by_ref).length, "superseded"]
+].map(([n, l]) => `<span class="stat"><b>${n}</b>${l}</span>`).join("");
+
+const TABS = [["actions","Actions by route"],["blocked","Blocked by gate"],["guards","Guardrails & decisions"],
+  ["superseded","Superseded"],["recap","Recap draft"],["internal","Internal notes & meeting brief"]];
+document.getElementById("tabs").innerHTML = TABS.map(([k, l]) => `<button data-t="${k}">${l}</button>`).join("");
+document.getElementById("tabs").onclick = e => { if (e.target.dataset.t) { tab = e.target.dataset.t; render(); } };
+document.getElementById("q").oninput = render;
+
+function matches(text) {
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  return !q || text.toLowerCase().includes(q);
+}
+function quotes(i) {
+  return (i?.evidence || []).map(e => `<blockquote>${e.found ? "" : "⚠ not found in transcript: "}“${esc(e.quote)}”${e.speaker ? ` <span class="sub">— ${esc(e.speaker)}</span>` : ""}</blockquote>`).join("");
+}
+function tags(list) { return (list || []).map(t => `<span class="tag">${esc(t)}</span>`).join(""); }
+function card(id, title, badge, badgeCls, sub, body, searchText) {
+  if (!matches(searchText)) return "";
+  const st = state[id] || "";
+  return `<div class="card ${st}" data-id="${esc(id)}">
+    <div class="row"><div class="title">${esc(title)}<div class="sub">${sub}</div></div>
+      <span class="badge ${badgeCls}">${esc(badge)}</span>
+      <span class="btns"><button class="a ${st==="approved"?"on":""}" data-act="approved">Approve</button>
+      <button class="r ${st==="rejected"?"on":""}" data-act="rejected">Reject</button></span></div>
+    <details><summary>Details, evidence & gate</summary>${body}</details></div>`;
+}
+function actionCard(a) {
+  const i = items[a.item_id];
+  const sub = [a.route.replace("_", " "), a.kind, a.date ? `due ${a.date}` : "", a.date && a.date < D.as_of && a.route !== "recap" ? "past due, status unknown" : "",
+    i?.earliest_start ? `not before ${i.earliest_start}` : "", i ? `item ${i.id}` : ""].filter(Boolean).join(" · ");
+  const reasons = a.gate.reasons.map(r => `<div class="reason ${a.gate.status==="blocked"?"bad":""}">${a.gate.status==="blocked"?"⛔ blocked by ":"• "}${esc(r)}</div>`).join("")
+    + a.gate.notes.map(n => `<div class="reason">• gate note: ${esc(n)}</div>`).join("");
+  const body = `${i ? `<p>${esc(i.detail)}</p>` : ""}${i?.trigger_condition ? `<p><b>Only if:</b> ${esc(i.trigger_condition)}</p>` : ""}
+    ${reasons}${quotes(i)}<div>${tags(a.scope_tags)}</div>${i?.flags?.length ? `<div class="sub">flags: ${esc(i.flags.join("; "))}</div>` : ""}`;
+  const text = [a.title, i?.detail, a.scope_tags.join(" "), a.gate.reasons.join(" "), ...(i?.evidence || []).map(e => e.quote)].join(" ");
+  return card(a.id, a.title, LABEL[a.gate.status] || a.gate.status, a.gate.status, sub, body, text);
+}
+function itemCard(i, badge) {
+  const sub = [i.type.replace(/_/g, " "), i.status, i.window_start ? `${i.window_start} → ${i.window_end || "…"}` : "",
+    i.lifted_by ? `lifted by ${i.lifted_by}` : "", i.forbids_action_kinds?.length ? `forbids ${i.forbids_action_kinds.join(", ")}` : "", i.id].filter(Boolean).join(" · ");
+  const body = `<p>${esc(i.detail)}</p>${quotes(i)}<div>${tags(i.scope_tags)}</div>`;
+  return card(i.id, i.title, badge, "neutral", sub, body, [i.title, i.detail, i.scope_tags.join(" "), ...i.evidence.map(e => e.quote)].join(" "));
+}
+function section(title, html) { return `<h2>${esc(title)}</h2>${html || '<div class="empty">nothing here</div>'}`; }
+
+function render() {
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.t === tab));
+  const m = document.getElementById("main");
+  if (tab === "actions") {
+    m.innerHTML = ROUTES.map(([r, l]) => {
+      const acts = D.actions.filter(a => a.route === r);
+      return acts.length ? section(`${l} (${acts.length})`, acts.map(actionCard).join("")) : "";
+    }).join("");
+  } else if (tab === "blocked") {
+    m.innerHTML = section(`Blocked by the gate (${blocked.length})`, blocked.map(actionCard).join(""));
+  } else if (tab === "guards") {
+    const g = D.items.filter(i => active(i) && ["guardrail","blackout_window"].includes(i.type));
+    const dec = D.items.filter(i => active(i) && ["declined","parked"].includes(i.status) && !["guardrail","blackout_window"].includes(i.type));
+    const chk = D.items.filter(i => !i.evidence.some(e => e.found));
+    m.innerHTML = section(`Guardrails & blackouts (${g.length})`, g.map(i => itemCard(i, i.type === "blackout_window" ? "blackout" : "guardrail")).join(""))
+      + section(`Decisions: not doing / parked (${dec.length})`, dec.map(i => itemCard(i, i.status)).join(""))
+      + section(`Needs a human check: quote not found (${chk.length})`, chk.map(i => itemCard(i, "unverified")).join(""));
+  } else if (tab === "superseded") {
+    const sup = D.items.filter(i => i.superseded_by_ref);
+    m.innerHTML = section(`Superseded or merged (${sup.length})`, sup.map(i => {
+      const n = byRef[i.superseded_by_ref];
+      return itemCard({...i, title: `${i.title}  →  ${n ? n.title : "?"}`, detail: `${i.detail}\n\nReplaced by ${n ? n.id : "?"}. ${(i.flags || []).filter(f => /supersed|duplicate/.test(f)).join("; ")}`}, "superseded");
+    }).join(""));
+  } else if (tab === "recap") {
+    m.innerHTML = section("Recap draft (not sent)", (D.draft_flags || []).map(f => `<div class="warn">check: ${esc(f)}</div>`).join("") + `<pre>${esc(D.drafts.recap_email)}</pre>`);
+  } else {
+    m.innerHTML = section("Internal notes", `<pre>${esc(D.drafts.internal_notes) || "—"}</pre>`)
+      + section("Meeting brief", D.drafts.meeting_brief ? `<pre>${esc(D.drafts.meeting_brief)}</pre>` : "")
+      + section("Pipeline warnings", (D.warnings || []).map(w => `<div class="warn">${esc(w)}</div>`).join(""));
+  }
+  const n = Object.values(state);
+  document.getElementById("review").textContent =
+    `${n.filter(s => s === "approved").length} approved · ${n.filter(s => s === "rejected").length} rejected (this page only, not saved)`;
+}
+document.getElementById("main").onclick = e => {
+  const act = e.target.dataset.act; if (!act) return;
+  const id = e.target.closest(".card").dataset.id;
+  state[id] = state[id] === act ? undefined : act;
+  if (!state[id]) delete state[id];
+  render();
+};
+render();
+</script>
+</body>
+</html>

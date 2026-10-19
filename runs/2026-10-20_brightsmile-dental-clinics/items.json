@@ -1,0 +1,827 @@
+{
+  "client": "BrightSmile Dental Clinics",
+  "slug": "brightsmile-dental-clinics",
+  "meeting_date": "2026-10-20",
+  "as_of": "2026-10-21",
+  "transcript": "/Users/popiolkoks/rinvo-zadanie-rekrutacyjne/examples/brightsmile_call.txt",
+  "language": "en",
+  "primary_contact": "Priya Shah",
+  "people": [
+    {
+      "name": "Tom Harper",
+      "side": "vendor",
+      "role": null,
+      "email": null,
+      "present_on_call": true,
+      "can_approve": [],
+      "cannot_approve": []
+    },
+    {
+      "name": "Priya Shah",
+      "side": "client",
+      "role": "front desk manager",
+      "email": null,
+      "present_on_call": true,
+      "can_approve": [],
+      "cannot_approve": []
+    },
+    {
+      "name": "Dr. Lewis",
+      "side": "client",
+      "role": "manager",
+      "email": null,
+      "present_on_call": false,
+      "can_approve": [
+        "manchester_clinic"
+      ],
+      "cannot_approve": []
+    }
+  ],
+  "items": [
+    {
+      "ref": "a1",
+      "type": "knowledge_base_fix",
+      "title": "Update Leeds clinic closing time to 7pm",
+      "detail": "The agent currently tells patients the Leeds clinic closes at 6pm. It should be updated to 7pm for weekdays.",
+      "owner_side": "vendor",
+      "owner_person": "Tom Harper",
+      "status": "open",
+      "action_kind": "update_kb",
+      "product_area": "agent_knowledge",
+      "new_for_end_customers": false,
+      "client_requested": true,
+      "vendor_commitment_level": "committed",
+      "blocked_on_input": null,
+      "blocked_on_person": null,
+      "scope_tags": [
+        "leeds_clinic",
+        "closing_hours"
+      ],
+      "visibility": "client",
+      "due_phrase": "today",
+      "due": "2026-10-20",
+      "earliest_start_phrase": null,
+      "earliest_start": null,
+      "trigger_condition": null,
+      "depends_on": [],
+      "related_refs": [],
+      "superseded_by_ref": null,
+      "approver": null,
+      "max_reminders": null,
+      "forbids_action_kinds": [],
+      "window_start": null,
+      "window_end": null,
+      "lifted_by": null,
+      "applies_to_all_work": false,
+      "demand_signal": false,
+      "evidence_quotes": [
+        "it keeps telling patients our Leeds clinic closes at 6pm. We moved to 7pm on weekdays last month.",
+        "I'll update it to 7pm today."
+      ],
+      "confidence": 1.0,
+      "id": "20261020-01",
+      "evidence": [
+        {
+          "quote": "it keeps telling patients our Leeds clinic closes at 6pm. We moved to 7pm on weekdays last month.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 2",
+          "turn": 3,
+          "source": "speech"
+        },
+        {
+          "quote": "I'll update it to 7pm today.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 1",
+          "turn": 4,
+          "source": "speech"
+        }
+      ],
+      "flags": [],
+      "amended_from": null,
+      "state_match": null
+    },
+    {
+      "ref": "a2",
+      "type": "bug",
+      "title": "Reduce agent confirmation prompts for cancellations",
+      "detail": "The agent asks patients to confirm cancellation three times, which is annoying. Rinvo needs two call IDs from the client to investigate and fix this issue.",
+      "owner_side": "vendor",
+      "owner_person": "Tom Harper",
+      "status": "waiting",
+      "action_kind": "fix",
+      "product_area": "agent_conversation",
+      "new_for_end_customers": false,
+      "client_requested": true,
+      "vendor_commitment_level": "will_look_into",
+      "blocked_on_input": "Two call IDs for examples of the issue.",
+      "blocked_on_person": "Priya Shah",
+      "scope_tags": [
+        "agent",
+        "cancellation",
+        "confirmation_flow"
+      ],
+      "visibility": "client",
+      "due_phrase": null,
+      "due": null,
+      "earliest_start_phrase": null,
+      "earliest_start": null,
+      "trigger_condition": null,
+      "depends_on": [
+        "a3"
+      ],
+      "related_refs": [
+        "a3"
+      ],
+      "superseded_by_ref": null,
+      "approver": null,
+      "max_reminders": null,
+      "forbids_action_kinds": [],
+      "window_start": null,
+      "window_end": null,
+      "lifted_by": null,
+      "applies_to_all_work": false,
+      "demand_signal": false,
+      "evidence_quotes": [
+        "when a patient says \"cancel\", the agent asks them to confirm three times. That's annoying people.",
+        "I can't really dig in without them, so I'll wait for those."
+      ],
+      "confidence": 1.0,
+      "id": "20261020-02",
+      "evidence": [
+        {
+          "quote": "when a patient says \"cancel\", the agent asks them to confirm three times. That's annoying people.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 2",
+          "turn": 5,
+          "source": "speech"
+        },
+        {
+          "quote": "I can't really dig in without them, so I'll wait for those.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 1",
+          "turn": 8,
+          "source": "speech"
+        }
+      ],
+      "flags": [],
+      "amended_from": null,
+      "state_match": null
+    },
+    {
+      "ref": "a3",
+      "type": "waiting_on_client",
+      "title": "Send two call IDs for cancellation bug",
+      "detail": "Priya Shah will email two call IDs to Tom Harper by Friday, October 23, 2026, to help investigate the agent's triple confirmation for cancellations.",
+      "owner_side": "client",
+      "owner_person": "Priya Shah",
+      "status": "open",
+      "action_kind": "send",
+      "product_area": "agent_conversation",
+      "new_for_end_customers": false,
+      "client_requested": true,
+      "vendor_commitment_level": "no_commitment",
+      "blocked_on_input": null,
+      "blocked_on_person": null,
+      "scope_tags": [
+        "call_ids",
+        "cancellation",
+        "priya"
+      ],
+      "visibility": "client",
+      "due_phrase": "by Friday",
+      "due": "2026-10-23",
+      "earliest_start_phrase": null,
+      "earliest_start": null,
+      "trigger_condition": null,
+      "depends_on": [],
+      "related_refs": [
+        "a2"
+      ],
+      "superseded_by_ref": null,
+      "approver": null,
+      "max_reminders": null,
+      "forbids_action_kinds": [],
+      "window_start": null,
+      "window_end": null,
+      "lifted_by": null,
+      "applies_to_all_work": false,
+      "demand_signal": false,
+      "evidence_quotes": [
+        "I'll email you two call IDs by Friday."
+      ],
+      "confidence": 1.0,
+      "id": "20261020-03",
+      "evidence": [
+        {
+          "quote": "I'll email you two call IDs by Friday.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 2",
+          "turn": 7,
+          "source": "speech"
+        }
+      ],
+      "flags": [],
+      "amended_from": null,
+      "state_match": null
+    },
+    {
+      "ref": "a4",
+      "type": "feature_request",
+      "title": "Agent to offer next free slot on cancellation",
+      "detail": "The client requests a feature where the agent offers the next available appointment slot when a patient cancels, acting as a rebooking flow.",
+      "owner_side": "vendor",
+      "owner_person": null,
+      "status": "open",
+      "action_kind": "build",
+      "product_area": "agent_conversation",
+      "new_for_end_customers": true,
+      "client_requested": true,
+      "vendor_commitment_level": "will_look_into",
+      "blocked_on_input": null,
+      "blocked_on_person": null,
+      "scope_tags": [
+        "rebooking",
+        "cancellation",
+        "agent_flow"
+      ],
+      "visibility": "client",
+      "due_phrase": null,
+      "due": null,
+      "earliest_start_phrase": null,
+      "earliest_start": null,
+      "trigger_condition": null,
+      "depends_on": [],
+      "related_refs": [],
+      "superseded_by_ref": null,
+      "approver": null,
+      "max_reminders": null,
+      "forbids_action_kinds": [],
+      "window_start": null,
+      "window_end": null,
+      "lifted_by": null,
+      "applies_to_all_work": false,
+      "demand_signal": false,
+      "evidence_quotes": [
+        "could the agent offer the next free slot when someone cancels? Like a rebooking flow.",
+        "I'll log it as a feature request, no date yet."
+      ],
+      "confidence": 1.0,
+      "id": "20261020-04",
+      "evidence": [
+        {
+          "quote": "could the agent offer the next free slot when someone cancels? Like a rebooking flow.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 2",
+          "turn": 9,
+          "source": "speech"
+        },
+        {
+          "quote": "I'll log it as a feature request, no date yet.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 1",
+          "turn": 10,
+          "source": "speech"
+        }
+      ],
+      "flags": [],
+      "amended_from": null,
+      "state_match": null
+    },
+    {
+      "ref": "a5",
+      "type": "guardrail",
+      "title": "Do not call Manchester clinic patients",
+      "detail": "Rinvo must not start calling patients for the Manchester clinic until Dr. Lewis provides explicit approval.",
+      "owner_side": "client",
+      "owner_person": "Dr. Lewis",
+      "status": "open",
+      "action_kind": "none",
+      "product_area": "campaigns_and_leads",
+      "new_for_end_customers": true,
+      "client_requested": true,
+      "vendor_commitment_level": "no_commitment",
+      "blocked_on_input": "Approval from Dr. Lewis to start calling Manchester clinic patients.",
+      "blocked_on_person": "Dr. Lewis",
+      "scope_tags": [
+        "manchester_clinic",
+        "patient_calls",
+        "dr_lewis"
+      ],
+      "visibility": "client",
+      "due_phrase": null,
+      "due": null,
+      "earliest_start_phrase": null,
+      "earliest_start": null,
+      "trigger_condition": null,
+      "depends_on": [],
+      "related_refs": [],
+      "superseded_by_ref": null,
+      "approver": "Dr. Lewis",
+      "max_reminders": null,
+      "forbids_action_kinds": [
+        "launch",
+        "contact"
+      ],
+      "window_start": null,
+      "window_end": null,
+      "lifted_by": "Dr. Lewis",
+      "applies_to_all_work": false,
+      "demand_signal": false,
+      "evidence_quotes": [
+        "please don't start calling the Manchester clinic patients yet. Our manager, Dr. Lewis, needs to sign that off first.",
+        "Understood, Manchester stays off until you confirm Dr. Lewis approved it."
+      ],
+      "confidence": 1.0,
+      "id": "20261020-05",
+      "evidence": [
+        {
+          "quote": "please don't start calling the Manchester clinic patients yet. Our manager, Dr. Lewis, needs to sign that off first.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 2",
+          "turn": 11,
+          "source": "speech"
+        },
+        {
+          "quote": "Understood, Manchester stays off until you confirm Dr. Lewis approved it.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 1",
+          "turn": 12,
+          "source": "speech"
+        }
+      ],
+      "flags": [],
+      "amended_from": null,
+      "state_match": null
+    },
+    {
+      "ref": "a6",
+      "type": "blackout_window",
+      "title": "No new launches while Priya Shah is away",
+      "detail": "No new features or campaigns that affect end customers should go live between November 2, 2026, and November 9, 2026, inclusive, as Priya Shah will be absent.",
+      "owner_side": "vendor",
+      "owner_person": null,
+      "status": "open",
+      "action_kind": "none",
+      "product_area": "other",
+      "new_for_end_customers": false,
+      "client_requested": true,
+      "vendor_commitment_level": "committed",
+      "blocked_on_input": null,
+      "blocked_on_person": null,
+      "scope_tags": [
+        "priya",
+        "launches"
+      ],
+      "visibility": "client",
+      "due_phrase": null,
+      "due": null,
+      "earliest_start_phrase": null,
+      "earliest_start": null,
+      "trigger_condition": null,
+      "depends_on": [],
+      "related_refs": [],
+      "superseded_by_ref": null,
+      "approver": null,
+      "max_reminders": null,
+      "forbids_action_kinds": [
+        "launch"
+      ],
+      "window_start": "2026-11-02",
+      "window_end": "2026-11-09",
+      "lifted_by": "Priya Shah",
+      "applies_to_all_work": true,
+      "demand_signal": false,
+      "evidence_quotes": [
+        "I'm off from the 2nd to the 9th of November, so nothing new goes live while I'm away.",
+        "Noted, no launches that week."
+      ],
+      "confidence": 1.0,
+      "id": "20261020-06",
+      "evidence": [
+        {
+          "quote": "I'm off from the 2nd to the 9th of November, so nothing new goes live while I'm away.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 2",
+          "turn": 13,
+          "source": "speech"
+        },
+        {
+          "quote": "Noted, no launches that week.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 1",
+          "turn": 14,
+          "source": "speech"
+        }
+      ],
+      "flags": [],
+      "amended_from": null,
+      "state_match": null
+    },
+    {
+      "ref": "a7",
+      "type": "billing",
+      "title": "Correct VAT number on October invoice",
+      "detail": "The October invoice has an incorrect VAT number. Rinvo needs to provide a corrected invoice to BrightSmile's accounts team by next week (October 30, 2026).",
+      "owner_side": "vendor",
+      "owner_person": "finance person",
+      "status": "open",
+      "action_kind": "send",
+      "product_area": "billing",
+      "new_for_end_customers": false,
+      "client_requested": true,
+      "vendor_commitment_level": "committed",
+      "blocked_on_input": null,
+      "blocked_on_person": null,
+      "scope_tags": [
+        "october_invoice",
+        "vat_number",
+        "accounts_team"
+      ],
+      "visibility": "client",
+      "due_phrase": "next week",
+      "due": "2026-10-30",
+      "earliest_start_phrase": null,
+      "earliest_start": null,
+      "trigger_condition": null,
+      "depends_on": [],
+      "related_refs": [],
+      "superseded_by_ref": null,
+      "approver": null,
+      "max_reminders": null,
+      "forbids_action_kinds": [],
+      "window_start": null,
+      "window_end": null,
+      "lifted_by": null,
+      "applies_to_all_work": false,
+      "demand_signal": false,
+      "evidence_quotes": [
+        "the October invoice had the wrong VAT number. Our accounts team needs a corrected one.",
+        "I'll pass it to our finance person today, corrected invoice next week."
+      ],
+      "confidence": 1.0,
+      "id": "20261020-07",
+      "evidence": [
+        {
+          "quote": "the October invoice had the wrong VAT number. Our accounts team needs a corrected one.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 2",
+          "turn": 15,
+          "source": "speech"
+        },
+        {
+          "quote": "I'll pass it to our finance person today, corrected invoice next week.",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 1",
+          "turn": 16,
+          "source": "speech"
+        }
+      ],
+      "flags": [],
+      "amended_from": null,
+      "state_match": null
+    },
+    {
+      "ref": "f0_1",
+      "type": "guardrail",
+      "title": "Do not call Manchester clinic patients",
+      "detail": "Do not start calling patients for the Manchester clinic until Dr. Lewis has signed off on it. This action is blocked until client confirmation.",
+      "owner_side": "vendor",
+      "owner_person": null,
+      "status": "open",
+      "action_kind": "none",
+      "product_area": "campaigns_and_leads",
+      "new_for_end_customers": true,
+      "client_requested": true,
+      "vendor_commitment_level": "committed",
+      "blocked_on_input": "Dr. Lewis's sign-off confirmation",
+      "blocked_on_person": "Priya Shah",
+      "scope_tags": [
+        "manchester_clinic",
+        "dr_lewis"
+      ],
+      "visibility": "client",
+      "due_phrase": null,
+      "due": null,
+      "earliest_start_phrase": null,
+      "earliest_start": null,
+      "trigger_condition": "Dr. Lewis's approval confirmed by Priya Shah",
+      "depends_on": [],
+      "related_refs": [],
+      "superseded_by_ref": "a5",
+      "approver": "Dr. Lewis",
+      "max_reminders": null,
+      "forbids_action_kinds": [
+        "launch"
+      ],
+      "window_start": null,
+      "window_end": null,
+      "lifted_by": "Priya Shah",
+      "applies_to_all_work": false,
+      "demand_signal": false,
+      "evidence_quotes": [
+        "please don't start calling the Manchester clinic patients yet",
+        "Our manager, Dr. Lewis, needs to sign that off first",
+        "Manchester stays off until you confirm Dr. Lewis approved it"
+      ],
+      "confidence": 1.0,
+      "id": "20261020-08",
+      "evidence": [
+        {
+          "quote": "please don't start calling the Manchester clinic patients yet",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 2",
+          "turn": 11,
+          "source": "speech"
+        },
+        {
+          "quote": "Our manager, Dr. Lewis, needs to sign that off first",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 2",
+          "turn": 11,
+          "source": "speech"
+        },
+        {
+          "quote": "Manchester stays off until you confirm Dr. Lewis approved it",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 1",
+          "turn": 12,
+          "source": "speech"
+        }
+      ],
+      "flags": [
+        "found in focus pass",
+        "superseded (reconcile): duplicate"
+      ],
+      "amended_from": null,
+      "state_match": null
+    },
+    {
+      "ref": "f0_2",
+      "type": "blackout_window",
+      "title": "No new launches while Priya Shah is away",
+      "detail": "No new features or campaigns should go live between November 2nd, 2026 and November 9th, 2026, as Priya Shah will be off.",
+      "owner_side": "vendor",
+      "owner_person": null,
+      "status": "open",
+      "action_kind": "none",
+      "product_area": "other",
+      "new_for_end_customers": true,
+      "client_requested": true,
+      "vendor_commitment_level": "committed",
+      "blocked_on_input": null,
+      "blocked_on_person": null,
+      "scope_tags": [
+        "priya_shah"
+      ],
+      "visibility": "client",
+      "due_phrase": null,
+      "due": null,
+      "earliest_start_phrase": null,
+      "earliest_start": null,
+      "trigger_condition": null,
+      "depends_on": [],
+      "related_refs": [],
+      "superseded_by_ref": "a6",
+      "approver": null,
+      "max_reminders": null,
+      "forbids_action_kinds": [
+        "launch"
+      ],
+      "window_start": "2026-11-02",
+      "window_end": "2026-11-09",
+      "lifted_by": null,
+      "applies_to_all_work": true,
+      "demand_signal": false,
+      "evidence_quotes": [
+        "I'm off from the 2nd to the 9th of November",
+        "nothing new goes live while I'm away",
+        "Noted, no launches that week"
+      ],
+      "confidence": 1.0,
+      "id": "20261020-09",
+      "evidence": [
+        {
+          "quote": "I'm off from the 2nd to the 9th of November",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 2",
+          "turn": 13,
+          "source": "speech"
+        },
+        {
+          "quote": "nothing new goes live while I'm away",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 2",
+          "turn": 13,
+          "source": "speech"
+        },
+        {
+          "quote": "Noted, no launches that week",
+          "found": true,
+          "score": 100.0,
+          "speaker": "Speaker 1",
+          "turn": 14,
+          "source": "speech"
+        }
+      ],
+      "flags": [
+        "found in focus pass",
+        "duplicate of 20261020-06 (deterministic, similarity 78)"
+      ],
+      "amended_from": null,
+      "state_match": null
+    }
+  ],
+  "actions": [
+    {
+      "id": "20261020-01/change_checklist",
+      "item_id": "20261020-01",
+      "route": "change_checklist",
+      "kind": "update_kb",
+      "title": "Update Leeds clinic closing time to 7pm",
+      "date": "2026-10-20",
+      "recipient": null,
+      "scope_tags": [
+        "leeds_clinic",
+        "closing_hours"
+      ],
+      "gate": {
+        "status": "clear",
+        "exec_date": "2026-10-21",
+        "reasons": [],
+        "blocked_by": [],
+        "notes": []
+      }
+    },
+    {
+      "id": "20261020-02/ticket",
+      "item_id": "20261020-02",
+      "route": "ticket",
+      "kind": "fix",
+      "title": "Look into (no fix promised): Reduce agent confirmation prompts for cancellations",
+      "date": null,
+      "recipient": null,
+      "scope_tags": [
+        "agent",
+        "cancellation",
+        "confirmation_flow"
+      ],
+      "gate": {
+        "status": "waiting",
+        "exec_date": "2026-10-21",
+        "reasons": [
+          "waiting on 20261020-03 'Send two call IDs for cancellation bug'"
+        ],
+        "blocked_by": [],
+        "notes": []
+      }
+    },
+    {
+      "id": "20261020-03/followup",
+      "item_id": "20261020-03",
+      "route": "followup",
+      "kind": "contact",
+      "title": "Remind Priya Shah: Send two call IDs for cancellation bug",
+      "date": "2026-10-23",
+      "recipient": "Priya Shah",
+      "scope_tags": [
+        "call_ids",
+        "cancellation",
+        "priya",
+        "priya"
+      ],
+      "gate": {
+        "status": "clear",
+        "exec_date": "2026-10-23",
+        "reasons": [],
+        "blocked_by": [],
+        "notes": []
+      }
+    },
+    {
+      "id": "20261020-04/backlog",
+      "item_id": "20261020-04",
+      "route": "backlog",
+      "kind": "build",
+      "title": "Agent to offer next free slot on cancellation",
+      "date": null,
+      "recipient": null,
+      "scope_tags": [
+        "rebooking",
+        "cancellation",
+        "agent_flow"
+      ],
+      "gate": {
+        "status": "clear",
+        "exec_date": "2026-10-21",
+        "reasons": [],
+        "blocked_by": [],
+        "notes": []
+      }
+    },
+    {
+      "id": "20261020-04/change_checklist",
+      "item_id": "20261020-04",
+      "route": "change_checklist",
+      "kind": "build",
+      "title": "Look into (no fix promised): Agent to offer next free slot on cancellation",
+      "date": null,
+      "recipient": null,
+      "scope_tags": [
+        "rebooking",
+        "cancellation",
+        "agent_flow"
+      ],
+      "gate": {
+        "status": "clear",
+        "exec_date": "2026-10-21",
+        "reasons": [],
+        "blocked_by": [],
+        "notes": []
+      }
+    },
+    {
+      "id": "20261020-07/internal_note",
+      "item_id": "20261020-07",
+      "route": "internal_note",
+      "kind": "none",
+      "title": "Correct VAT number on October invoice",
+      "date": "2026-10-30",
+      "recipient": null,
+      "scope_tags": [
+        "october_invoice",
+        "vat_number",
+        "accounts_team"
+      ],
+      "gate": {
+        "status": "clear",
+        "exec_date": "2026-10-30",
+        "reasons": [],
+        "blocked_by": [],
+        "notes": []
+      }
+    },
+    {
+      "id": "20261020-07/followup",
+      "item_id": "20261020-07",
+      "route": "followup",
+      "kind": "send",
+      "title": "Correct VAT number on October invoice",
+      "date": "2026-10-30",
+      "recipient": null,
+      "scope_tags": [
+        "october_invoice",
+        "vat_number",
+        "accounts_team"
+      ],
+      "gate": {
+        "status": "clear",
+        "exec_date": "2026-10-30",
+        "reasons": [],
+        "blocked_by": [],
+        "notes": []
+      }
+    },
+    {
+      "id": "recap/email",
+      "item_id": "recap",
+      "route": "recap",
+      "kind": "send",
+      "title": "Send call recap to Priya Shah",
+      "date": "2026-10-20",
+      "recipient": "Priya Shah",
+      "scope_tags": [
+        "recap",
+        "priya"
+      ],
+      "gate": {
+        "status": "clear",
+        "exec_date": "2026-10-21",
+        "reasons": [],
+        "blocked_by": [],
+        "notes": []
+      }
+    }
+  ],
+  "draft_flags": [],
+  "warnings": [
+    "dedupe: 20261020-09 'No new launches while Priya Shah is away' merged into 20261020-06 'No new launches while Priya Shah is away' (78)"
+  ]
+}

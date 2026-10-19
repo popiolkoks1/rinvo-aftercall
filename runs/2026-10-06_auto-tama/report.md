@@ -1,184 +1,178 @@
 # aftercall · Grupa Auto Tama · call 2026-10-06 · as of 2026-10-19
 
-73 items · 73 with a matching quote · 42 proposed actions · 3 blocked by the gate · recap to Kasia Malinowska (pl)
+77 items · 77 with a matching quote · 39 proposed actions · 4 blocked by the gate · recap to Kasia Malinowska (pl)
 
 Gate: ✅ clear · ⛔ blocked · ⏳ waiting on dependency/condition · 🔑 needs client approval · 🕒 not before date
 
 ## Tickets → tickets.csv (3)
-- ⏳ `20261006-04` Look into (no fix promised): Investigate agent asking about model twice
-    - Investigate the issue where the virtual assistant reportedly stopped responding to the client and asked about the car model a second time during a conversation. No recording or specific call ID is available.
-    - _waiting on 20261006-73 'Recording or call ID for the specific incident (from Kasia Malinowska)'_
-- ✅ `20261006-09` Agent calls back immediately after 3-second hang-up
-    - The agent called back six times on the same campaign in the afternoon, despite the rule to not call back if the client hangs up within 3 seconds. The first instance was at 16:40, number ending in 14.
-- ✅ `20261006-21` Look into (no fix promised): Fix 'interested' filter on contact list
-    - The 'interested' filter on the contact list in the panel does not correctly narrow down results, showing contacts with other statuses like 'received' or 'bought elsewhere'.
+- ✅ `20261006-01` Look into (no fix promised): Agent ignores client's initial speech and continues intro
+    - The virtual assistant starts its intro ('rozmowa jest nagrywana', 'wirtualna asystentka') without pausing for the client's initial speech, then apologizes and asks if the client is in the car. This makes clients realize it's a robot.
+- ✅ `20261006-11` Look into (no fix promised): Agent calls twice after short disconnect
+    - The agent called six times on the same campaign in the afternoon, after a client disconnected within 3 seconds. Example: a call at 16:40 to a number ending in 14. This should not happen, as the rule is not to call a second time on the same day.
+- ✅ `20261006-26` Look into (no fix promised): Fix 'zainteresowany' filter on contact list
+    - The 'zainteresowany' (interested) filter on the contact list in the panel does not correctly narrow down the list, showing all contacts instead of only interested ones.
 
 ## Config / KB / launch checklist (8)
-- ⛔ `20261006-02` Test two versions of agent introduction script for Toruń and Włocławek · due 2026-10-08, not before 2026-10-12, past due, status unknown
-    - Implement two versions of the agent's introductory script: one as currently configured, and a second, shorter version. Kasia will provide the text for both. The test should run for two days or across Toruń and Włocławek locations.
-    - _amended within call; was: Test two versions of agent introduction script | Implement two versions of the agent's introductory script: one as currently configured, and a second, shorter version. Kasia will provide the text for both. The test should run for two days or across Toruń and Włocławek locations._
-- ✅ `20261006-06` Update Włocławek salon address in agent knowledge base to Toruńska 120 · due 2026-10-06, past due, status unknown
-    - The virtual assistant is providing an outdated address for the Włocławek salon (Kapitulna) instead of the current address, Toruńska 120. Update the agent's knowledge base with the correct address.
-    - _amended within call; was: Update Włocławek salon address in agent knowledge base | The virtual assistant is providing an outdated address for the Włocławek salon (Kapitulna) instead of the current address, Toruńska 120. Update the agent's knowledge base with the correct address._
-- ✅ `20261006-12` Adjust agent dialing hours for weekdays (09:00-19:00) and Saturday (09:00-15:00)
-    - Change the agent's dialing hours. Weekdays (Monday-Friday) should be 09:00-19:00. Saturday should be 09:00-15:00. The agent does not dial on Sunday.
-    - _amended within call; was: Adjust agent dialing hours for weekdays and Saturday to final values | Change the agent's dialing hours. Weekdays (Monday-Friday) should be 09:00-19:00. Saturday should be 09:00-15:00. The agent does not dial on Sunday._
-- ⛔ `20261006-17` Launch once received: Client to send fresh leads file for Toruń and Włocławek by Monday, 2026-10-12
-    - Kasia Malinowska will send a file containing fresh leads from the last month (website and Facebook) by Monday, 2026-10-12. The file does not need to follow a specific template; it must contain the phone number and specify Toruń or Włocławek. Old leads should not be re-processed.
-    - _amended within call; was: Client to send fresh leads file | Kasia Malinowska will send a file containing fresh leads from the last month (website and Facebook) by Monday, 2026-10-12. The file does not need to follow a specific template; it must contain the phone number and specify Toruń or Włocławek. Old leads should not be re-processed._
-- ⏳ `20261006-23` Move 'last name' column next to 'status' on contact list
-    - Rearrange the columns on the contact list in the panel to place the 'last name' column immediately after the 'status' column, improving visibility without scrolling.
-    - _waiting on 20261006-21 'Fix 'interested' filter on contact list'_
-    - _only if: if working on the contact list for the filter fix_
-- ✅ `20261006-32` Look into (no fix promised): Allow sending SMS after failed calls
-    - Enable the system to send an SMS to contacts if the bot fails to connect twice. The SMS should include a call-back option or link.
-- ✅ `20261006-42` Adjust agent dialing hours for Saturday to 9:00-15:00 for both Toruń and Włocławek
-    - Change the agent's dialing hours for Saturday from 9:00-14:00 to 9:00-15:00. Weekday hours remain 9:00-19:00. This applies to both Toruń and Włocławek.
-    - _amended within call; was: Adjust agent dialing hours for Saturday to 9:00-15:00 | Change the agent's dialing hours for Saturday from 9:00-14:00 to 9:00-15:00. Weekday hours remain 9:00-19:00._
-- ✅ `20261006-43` Update agent knowledge base with new Saturday closing time (15:00) for both Toruń and Włocławek salons
-    - Update the agent's knowledge base to reflect that both the Toruń and Włocławek salons close at 15:00 on Saturdays, instead of 14:00.
-    - _amended within call; was: Update agent knowledge base with new Saturday closing time for both salons | Update the agent's knowledge base to reflect that both the Toruń and Włocławek salons close at 15:00 on Saturdays, instead of 14:00._
+- ⛔ `20261006-03` Launch once received: Provide two versions of agent intro text for A/B test
+    - Kasia will write two versions of the agent's introductory text for an A/B test: one similar to the current, and one shorter, both stating it's a virtual assistant and the call is recorded. The text is needed by Thursday, 2026-10-08.
+- ⛔ `20261006-04` Run A/B test for two agent intro versions across cities for Peugeot and Citroën · not before 2026-10-12
+    - Rinvo will run an A/B test with two agent intro versions (current vs. shorter, client-provided text) for Peugeot and Citroën leads in Toruń and Włocławek. The test will run for two days, and Kasia will choose the better version. This will not be launched this week.
+    - _amended within call; was: Run A/B test for two agent intro versions across cities | Rinvo will run an A/B test with two agent intro versions (current vs. shorter, client-provided text) for Peugeot and Citroën leads in Toruń and Włocławek. The test will run for two days, and Kasia will choose the better version. This will not be launched this week._
+- ✅ `20261006-08` Update Włocławek salon address and Saturday hours in agent knowledge base · due 2026-10-06, past due, status unknown
+    - The agent is currently providing an outdated address for the Peugeot and Citroën salon in Włocławek (Kapitulna street). The correct address is Toruńska 120. The Saturday closing time should also be updated to 15:00 for both Toruń and Włocławek salons. This needs to be updated in the agent's knowledge base.
+    - _amended within call; was: Update Włocławek salon address in agent knowledge base | The agent is currently providing an outdated address for the Peugeot and Citroën salon in Włocławek (Kapitulna street). The correct address is Toruńska 120. This needs to be updated in the agent's knowledge base._
+- ✅ `20261006-13` Shorten agent calling hours to weekdays 09:00-19:00, Saturdays 09:00-15:00, and no Sundays
+    - Change agent calling hours to 09:00-19:00 on weekdays and 09:00-15:00 on Saturdays. The agent should not call on Sundays. Currently, it is 09:00-20:00 on weekdays and 09:00-20:00 on Saturdays.
+    - _amended within call; was: Shorten agent calling hours | Change agent calling hours to 09:00-19:00 on weekdays and 09:00-15:00 on Saturdays. The agent should not call on Sundays. Currently, it is 09:00-20:00 on weekdays and 09:00-20:00 on Saturdays._
+- ⛔ `20261006-20` Launch once received: Client to send fresh leads file
+    - Kasia Malinowska will send a file containing fresh leads from the last month (website and Facebook) that the sales team has not yet processed. The file is expected by Monday, 2026-10-12. The vendor will send one reminder email if not received.
+- ⏳ `20261006-28` Look into (no fix promised): Reorder columns in contact list to show surname after status
+    - Change the display order of columns in the contact list within the panel so that the client's surname appears immediately after the status column.
+    - _waiting on 20261006-26 'Fix 'zainteresowany' filter on contact list'_
+    - _only if: When working on the contact list for the filter fix (i4)._
+- ✅ `20261006-47` Adjust agent calling hours for Saturday
+    - Change the agent's calling hours for Saturday from 9:00-14:00 to 9:00-15:00. Weekday hours remain 9:00-19:00.
+- ✅ `20261006-48` Update agent knowledge base with new Saturday closing time
+    - Update the agent's knowledge base to reflect the new Saturday closing time of 15:00 for both the Toruń and Włocławek salons. This affects information the agent provides to customers about salon hours.
 
-## Product backlog (cross-client) (2)
-- ✅ `20261006-05` Implement A/B testing for agent scripts in client panel
-    - Develop a feature in the client panel allowing users to set up A/B tests for different versions of agent scripts (e.g., intro, question order). The system should automatically split calls and display results based on 'more full conversations' (confirmed phone, model, salon).
-- ✅ `20261006-32` Allow sending SMS after failed calls
-    - Enable the system to send an SMS to contacts if the bot fails to connect twice. The SMS should include a call-back option or link.
+## Product backlog (cross-client) (1)
+- ✅ `20261006-07` Add A/B testing functionality to the client panel
+    - Kasia requests a feature in the client panel to allow her to set up and monitor A/B tests for different conversation intros or flow variations (e.g., asking about model vs. update status first). The primary metric for success is more full conversations.
 
-## Follow-ups → followups.ics (15)
-- ⏳ `20261006-03` Remind Kasia Malinowska to send agent intro texts · due 2026-10-08, past due, status unknown
-    - Send one reminder email to Kasia Malinowska if she has not provided the text for the two agent intro versions by Thursday, 2026-10-08.
-    - _only if: Kasia has not sent the intro texts by 2026-10-08._
-- ⏳ `20261006-07` Notify Kasia Malinowska about Włocławek address update and do not send test recording · due 2026-10-06, past due, status unknown
-    - After updating the Włocławek salon address in the agent's knowledge base, notify Kasia Malinowska that the correction has been made. She will perform her own test, so no test recording is needed.
-    - _waiting on 20261006-06 'Update Włocławek salon address in agent knowledge base to Toruńska 120'_
-    - _amended within call; was: Notify Kasia Malinowska about Włocławek address update | After updating the Włocławek salon address in the agent's knowledge base, notify Kasia Malinowska that the correction has been made. She will perform her own test._
-- ✅ `20261006-17` Remind Kasia Malinowska: Client to send fresh leads file for Toruń and Włocławek by Monday, 2026-10-12 (max 1 reminder) · due 2026-10-12, past due, status unknown
-    - Kasia Malinowska will send a file containing fresh leads from the last month (website and Facebook) by Monday, 2026-10-12. The file does not need to follow a specific template; it must contain the phone number and specify Toruń or Włocławek. Old leads should not be re-processed.
-    - _amended within call; was: Client to send fresh leads file | Kasia Malinowska will send a file containing fresh leads from the last month (website and Facebook) by Monday, 2026-10-12. The file does not need to follow a specific template; it must contain the phone number and specify Toruń or Włocławek. Old leads should not be re-processed._
-- ✅ `20261006-18` Remind Kasia Malinowska: Receive specific misclassified lead example from client
-    - Client to provide the specific case where an email after validation misclassified a lead (e.g., service request as sales lead) for investigation. This is needed to determine if the agent misclassified or if the sales person misread the email.
-- ✅ `20261006-26` Remind Kasia Malinowska: Receive assistance numbers and field list for after-hours agent
-    - Client to send the list of assistance numbers and required data fields for the proposed after-hours agent. This information will be held by the vendor and not implemented until explicit approval from Kasia Malinowska.
-- ✅ `20261006-28` Correct invoice for September to reflect correct company name · due 2026-10-16, past due, status unknown
-    - Issue a corrected invoice for September, changing the client name from 'Grupa Auto Tama sp. z o.o.' to 'Auto Tama Toruń sp. z o.o.' to match the signed agreement.
-- ✅ `20261006-29` Clarify billing policy for calls under 3 seconds
-    - Determine if calls under 3 seconds are billed as a full minute or not, to answer the client's question.
-- ✅ `20261006-30` Credit client for erroneous double calls
-    - Identify and credit Grupa Auto Tama for calls where the agent erroneously called the same number twice on the same day after a 3-second disconnect.
-- ✅ `20261006-31` Send client count of erroneous double calls
-    - Provide Kasia Malinowska with the number of instances where the agent called the same number twice on the same day after a 3-second disconnect.
-- 🔑 `20261006-33` Send SMS pricing and example text to client · due 2026-10-09, past due, status unknown
-    - Provide Kasia Malinowska with the pricing structure for SMS messages and an example text for the message sent after failed calls. Paweł's approval is required for anything that costs money.
+## Follow-ups → followups.ics (16)
+- ✅ `20261006-02` Investigate shortening agent intro to ask question sooner
+    - Marek will investigate if the agent's initial formula can be shortened to ask the client's question sooner, while keeping the 'przepraszam' phrase.
+- ✅ `20261006-03` Remind Kasia Malinowska: Provide two versions of agent intro text for A/B test (max 1 reminder) · due 2026-10-08, past due, status unknown
+    - Kasia will write two versions of the agent's introductory text for an A/B test: one similar to the current, and one shorter, both stating it's a virtual assistant and the call is recorded. The text is needed by Thursday, 2026-10-08.
+- ⛔ `20261006-04` Run A/B test for two agent intro versions across cities for Peugeot and Citroën · not before 2026-10-12
+    - Rinvo will run an A/B test with two agent intro versions (current vs. shorter, client-provided text) for Peugeot and Citroën leads in Toruń and Włocławek. The test will run for two days, and Kasia will choose the better version. This will not be launched this week.
+    - _amended within call; was: Run A/B test for two agent intro versions across cities | Rinvo will run an A/B test with two agent intro versions (current vs. shorter, client-provided text) for Peugeot and Citroën leads in Toruń and Włocławek. The test will run for two days, and Kasia will choose the better version. This will not be launched this week._
+- ✅ `20261006-10` Notify Kasia when Włocławek address is updated
+    - Notify Kasia Malinowska when the agent's knowledge base has been updated with the correct address for the Włocławek salon (Toruńska 120).
+- ✅ `20261006-20` Remind Kasia Malinowska: Client to send fresh leads file (max 1 reminder) · due 2026-10-12, past due, status unknown
+    - Kasia Malinowska will send a file containing fresh leads from the last month (website and Facebook) that the sales team has not yet processed. The file is expected by Monday, 2026-10-12. The vendor will send one reminder email if not received.
+- ✅ `20261006-23` Remind Ola: Receive example email for misclassified lead
+    - Client to send an example email where a service lead was misclassified as sales. This is needed to investigate if the agent misclassified it or if the sales person misread it.
+- ✅ `20261006-31` Remind Kasia Malinowska: Send Assistance numbers and BOK field list for after-hours agent
+    - Kasia to send the list of Assistance numbers and the required fields for BOK inquiries for the potential after-hours agent. This is not a green light for implementation.
+- ✅ `20261006-33` Correct invoice for September to 'Auto Tama Toruń sp. z o.o.' · due 2026-10-16, past due, status unknown
+    - The invoice for September was issued to 'Grupa Auto Tama sp. z o.o.' but should be addressed to 'Auto Tama Toruń sp. z o.o.' as per the contract. A correction is required.
+- ✅ `20261006-34` Confirm billing logic for short calls
+    - Confirm whether Rinvo charges for calls from the first second or for a started minute. This affects calls where the client disconnects within three seconds.
+- ✅ `20261006-35` Deduct charges for erroneous double calls
+    - Deduct charges for calls where the agent erroneously called the same number twice in the same day after a three-second disconnect, as these are Rinvo's error.
+- 🔑 `20261006-38` Send SMS pricing and example text · due 2026-10-09, past due, status unknown
+    - Send the pricing for SMS messages and an example text for the SMS follow-up feature to Kasia. Paweł needs to approve the costs.
     - _needs approval from Paweł_
-- ✅ `20261006-35` Chase confirmation (no invite until confirmed): Schedule meeting with Paweł to discuss integration and Rinvo capabilities · due 2026-10-15, past due, status unknown
-    - Marek Rewoliński will meet with Paweł for 30 minutes to discuss CRM integration and showcase Rinvo's current offerings. Kasia Malinowska will confirm the proposed date/time.
-- ✅ `20261006-37` Prepare cheat sheet for sales team on lead statuses
-    - Prepare a one-page cheat sheet explaining the meaning of lead statuses ('zainteresowany', 'oddzwonić', 'niezweryfikowany') for the client's sales team.
-- ⛔ `20261006-38` Chase confirmation (no invite until confirmed): Conduct online training for sales team on lead statuses
-    - Conduct a short (15-minute) online training session for Ola and the sales team to explain lead statuses. The training should only happen after fresh leads are introduced, and Kasia Malinowska will set the date.
-- ✅ `20261006-72` Remind Kasia Malinowska: Text for two intro versions (from Kasia Malinowska)
-    - text for two intro versions. Needed before we can act on 20261006-02 'Test two versions of agent introduction script for Toruń and Włocławek'. Created automatically from that item.
-- ✅ `20261006-73` Remind Kasia Malinowska: Recording or call ID for the specific incident (from Kasia Malinowska)
-    - recording or call ID for the specific incident. Needed before we can act on 20261006-04 'Investigate agent asking about model twice'. Created automatically from that item.
+- ✅ `20261006-40` Chase confirmation (no invite until confirmed): Schedule meeting with Paweł to discuss Rinvo capabilities and integration
+    - Schedule a 30-minute meeting with Paweł to discuss Rinvo's current capabilities, understand his needs, and address concerns regarding competitor VoiceDesk. The proposed time is Thursday, October 15, 2026, at 10:00 AM. Marek will send the invitation after Kasia confirms the time with Paweł.
+- ✅ `20261006-41` Remind Kasia Malinowska: Confirm meeting time with Paweł
+    - Kasia will confirm Paweł's availability for a meeting with Marek on Thursday, October 15, 2026, at 10:00 AM.
+- ✅ `20261006-43` Prepare status cheat sheet for sales team
+    - Prepare a one-page cheat sheet explaining the meaning of each lead status ('zainteresowany', 'oddzwonić', 'niezweryfikowany') for the client's sales team.
+- ✅ `20261006-44` Chase confirmation (no invite until confirmed): Schedule training for sales team on lead statuses
+    - Schedule a short online training session for the client's sales team to explain lead statuses. The training should only happen after fresh leads are active. Kasia will determine the exact timing.
+- ✅ `20261006-77` Remind Paweł: Paweł's approval for company name usage (from Paweł)
+    - Paweł's approval for company name usage. Needed before we can act on 20261006-17 'Seek approval from Paweł to use company name in success story'. Created automatically from that item.
 
-## Internal notes → drafts/internal_notes.md (7)
-- ✅ `20261006-13` Record success story of Peugeot 208 sale from old lead
-    - A lead for a Peugeot 208, which had been in the database since July and was uncontacted, resulted in a sale on Saturday after the bot called on Friday. The client bought the car in Toruń.
-- ✅ `20261006-14` Use Peugeot 208 success story without company name
-    - The success story of the Peugeot 208 sale can be used immediately without the company name. Using the company name 'Grupa Auto Tama' requires Paweł's approval.
-- ✅ `20261006-28` Correct invoice for September to reflect correct company name · due 2026-10-16, past due, status unknown
-    - Issue a corrected invoice for September, changing the client name from 'Grupa Auto Tama sp. z o.o.' to 'Auto Tama Toruń sp. z o.o.' to match the signed agreement.
-- ✅ `20261006-29` Clarify billing policy for calls under 3 seconds
-    - Determine if calls under 3 seconds are billed as a full minute or not, to answer the client's question.
-- ✅ `20261006-30` Credit client for erroneous double calls
-    - Identify and credit Grupa Auto Tama for calls where the agent erroneously called the same number twice on the same day after a 3-second disconnect.
-- ✅ `20261006-34` Client evaluating competitor VoiceDesk
-    - Grupa Auto Tama is evaluating VoiceDesk, a competitor offering lead bots. VoiceDesk claims to be ~30% cheaper and offers CRM integration, which is a key interest for Paweł.
-- ✅ `20261006-36` Showcase Peugeot 208 sale success story to Paweł
-    - During the meeting with Paweł, Marek Rewoliński will present the success story of a Peugeot 208 sale, where a lead from July was contacted by the bot on Friday and purchased on Saturday.
+## Internal notes → drafts/internal_notes.md (5)
+- ✅ `20261006-16` Use Peugeot 208 success story without company name
+    - The vendor can use the success story of the Peugeot 208 sale (lead from July, bot call Friday, sale Saturday) as an example without mentioning the company name.
+- ✅ `20261006-17` Seek approval from Paweł to use company name in success story
+    - The vendor needs to ask Paweł for approval to use the company name (Grupa Auto Tama) when sharing the Peugeot 208 success story.
+- ✅ `20261006-33` Correct invoice for September to 'Auto Tama Toruń sp. z o.o.' · due 2026-10-16, past due, status unknown
+    - The invoice for September was issued to 'Grupa Auto Tama sp. z o.o.' but should be addressed to 'Auto Tama Toruń sp. z o.o.' as per the contract. A correction is required.
+- ✅ `20261006-35` Deduct charges for erroneous double calls
+    - Deduct charges for calls where the agent erroneously called the same number twice in the same day after a three-second disconnect, as these are Rinvo's error.
+- ✅ `20261006-39` Client evaluating competitor VoiceDesk
+    - Client is evaluating competitor VoiceDesk, which offers lead bots. VoiceDesk claims to be 30% cheaper and offers CRM integration, which is a key interest for Paweł.
 
-## Meeting brief → drafts/meeting_brief.md (6)
-- ✅ `20261006-13` Record success story of Peugeot 208 sale from old lead
-    - A lead for a Peugeot 208, which had been in the database since July and was uncontacted, resulted in a sale on Saturday after the bot called on Friday. The client bought the car in Toruń.
-- ✅ `20261006-14` Use Peugeot 208 success story without company name
-    - The success story of the Peugeot 208 sale can be used immediately without the company name. Using the company name 'Grupa Auto Tama' requires Paweł's approval.
-- ✅ `20261006-34` Client evaluating competitor VoiceDesk
-    - Grupa Auto Tama is evaluating VoiceDesk, a competitor offering lead bots. VoiceDesk claims to be ~30% cheaper and offers CRM integration, which is a key interest for Paweł.
-- ✅ `20261006-35` Schedule meeting with Paweł to discuss integration and Rinvo capabilities · due 2026-10-15, past due, status unknown
-    - Marek Rewoliński will meet with Paweł for 30 minutes to discuss CRM integration and showcase Rinvo's current offerings. Kasia Malinowska will confirm the proposed date/time.
-- ✅ `20261006-36` Showcase Peugeot 208 sale success story to Paweł
-    - During the meeting with Paweł, Marek Rewoliński will present the success story of a Peugeot 208 sale, where a lead from July was contacted by the bot on Friday and purchased on Saturday.
-- ✅ `20261006-38` Conduct online training for sales team on lead statuses
-    - Conduct a short (15-minute) online training session for Ola and the sales team to explain lead statuses. The training should only happen after fresh leads are introduced, and Kasia Malinowska will set the date.
+## Meeting brief → drafts/meeting_brief.md (5)
+- ✅ `20261006-16` Use Peugeot 208 success story without company name
+    - The vendor can use the success story of the Peugeot 208 sale (lead from July, bot call Friday, sale Saturday) as an example without mentioning the company name.
+- ✅ `20261006-17` Seek approval from Paweł to use company name in success story
+    - The vendor needs to ask Paweł for approval to use the company name (Grupa Auto Tama) when sharing the Peugeot 208 success story.
+- ✅ `20261006-39` Client evaluating competitor VoiceDesk
+    - Client is evaluating competitor VoiceDesk, which offers lead bots. VoiceDesk claims to be 30% cheaper and offers CRM integration, which is a key interest for Paweł.
+- ✅ `20261006-40` Schedule meeting with Paweł to discuss Rinvo capabilities and integration
+    - Schedule a 30-minute meeting with Paweł to discuss Rinvo's current capabilities, understand his needs, and address concerns regarding competitor VoiceDesk. The proposed time is Thursday, October 15, 2026, at 10:00 AM. Marek will send the invitation after Kasia confirms the time with Paweł.
+- ✅ `20261006-44` Schedule training for sales team on lead statuses
+    - Schedule a short online training session for the client's sales team to explain lead statuses. The training should only happen after fresh leads are active. Kasia will determine the exact timing.
 
 ## Client recap → drafts/recap_email.md (1)
 - ✅ Send call recap to Kasia Malinowska · due 2026-10-06
 
-## ⛔ Blocked by the gate (3)
-- **Test two versions of agent introduction script for Toruń and Włocławek** (change_checklist, launch, would run 2026-10-19)
-    - blocked by 20261006-40 'Blackout window for new launches during Kasia's vacation': forbids launch on [all scopes] during 2026-10-19..2026-10-23 — "od dziewiętnastego do dwudziestego trzeciego mam urlop. Cały tydzień."
-- **Launch once received: Client to send fresh leads file for Toruń and Włocławek by Monday, 2026-10-12** (change_checklist, launch, would run 2026-10-19)
-    - blocked by 20261006-40 'Blackout window for new launches during Kasia's vacation': forbids launch on [all scopes] during 2026-10-19..2026-10-23 — "od dziewiętnastego do dwudziestego trzeciego mam urlop. Cały tydzień."
-- **Chase confirmation (no invite until confirmed): Conduct online training for sales team on lead statuses** (followup, contact, would run 2026-10-19)
-    - blocked by 20261006-20 'Communicate only with Kasia Malinowska, not Ola': forbids contact on [ola] — "I do Oli nie piszę, ustalam wszystko z tobą."
+## ⛔ Blocked by the gate (4)
+- **Launch once received: Provide two versions of agent intro text for A/B test** (change_checklist, launch, would run 2026-10-19)
+    - blocked by 20261006-46 'Blackout window for new launches during Kasia's vacation (Oct 19-23, 2026)': forbids launch on [all scopes] during 2026-10-19..2026-10-23 — "od dziewiętnastego do dwudziestego trzeciego mam urlop. Cały tydzień. W tym czasie nic nowego nie odpalajcie"
+- **Run A/B test for two agent intro versions across cities for Peugeot and Citroën** (followup, launch, would run 2026-10-19)
+    - blocked by 20261006-46 'Blackout window for new launches during Kasia's vacation (Oct 19-23, 2026)': forbids launch on [all scopes] during 2026-10-19..2026-10-23 — "od dziewiętnastego do dwudziestego trzeciego mam urlop. Cały tydzień. W tym czasie nic nowego nie odpalajcie"
+- **Run A/B test for two agent intro versions across cities for Peugeot and Citroën** (change_checklist, launch, would run 2026-10-19)
+    - blocked by 20261006-46 'Blackout window for new launches during Kasia's vacation (Oct 19-23, 2026)': forbids launch on [all scopes] during 2026-10-19..2026-10-23 — "od dziewiętnastego do dwudziestego trzeciego mam urlop. Cały tydzień. W tym czasie nic nowego nie odpalajcie"
+- **Launch once received: Client to send fresh leads file** (change_checklist, launch, would run 2026-10-19)
+    - blocked by 20261006-46 'Blackout window for new launches during Kasia's vacation (Oct 19-23, 2026)': forbids launch on [all scopes] during 2026-10-19..2026-10-23 — "od dziewiętnastego do dwudziestego trzeciego mam urlop. Cały tydzień. W tym czasie nic nowego nie odpalajcie"
 
-## Guardrails & blackouts captured (11)
-- `20261006-10` Maintain 5-attempt dialing limit · forbids [change_config] on [dialing_limit, attempts] · lifted by Kasia Malinowska
-- `20261006-16` Do not enable Opel campaigns · forbids [launch,enable] on [opel_campaigns, brand] · lifted by Kasia Malinowska
-- `20261006-20` Communicate only with Kasia Malinowska, not Ola · forbids [contact] on [ola, kasia_malinowska, communication]
-- `20261006-27` Do not implement after-hours agent without Kasia Malinowska's explicit approval · forbids [launch,enable] on [after_hours, agent_flow, kasia_malinowska] · lifted by Kasia Malinowska
-- `20261006-39` Agent must not sell or offer used cars · forbids [launch] on [sales_conversation, used_cars, agent_script] · lifted by Kasia Malinowska
-- `20261006-40` Blackout window for new launches during Kasia's vacation · forbids [launch] on [kasia, vacation, new_launches] · 2026-10-19..2026-10-23
-- `20261006-41` Paweł cannot approve Opel campaigns or intro text changes · forbids [launch,change_config] on [pawel, opel_campaigns, intro_text_versions, kasia] · lifted by Kasia Malinowska
-- `20261006-44` Do not enter agent settings in the panel · forbids [change_config] on [agent_settings, panel] · lifted by Kasia
-- `20261006-51` Do not launch Opel lead validation without Kasia's confirmation · forbids [launch] on [opel, lead_validation, campaign, paweł] · lifted by Kasia
-- `20261006-67` All expenditures require Paweł's approval · forbids [launch,enable] on [pawel, expenditure, approval, cost] · lifted by Paweł
-- `20261006-69` Agent must not sell cars · forbids [launch,enable] on [agent, sales, lead_validation] · lifted by Kasia Malinowska
+## Guardrails & blackouts captured (12)
+- `20261006-05` Do not launch new agent intro versions this week · forbids [launch] on [agent_intro, ab_test] · 2026-10-06..2026-10-09 · lifted by Kasia Malinowska
+- `20261006-14` Do not mark 'on vacation' leads as uninterested · forbids [change_config] on [lead_status, on_vacation, interpretation]
+- `20261006-19` Do not enable Opel campaigns · forbids [launch,enable] on [opel, campaigns] · lifted by Kasia Malinowska
+- `20261006-21` Do not send file template for fresh leads · forbids [send] on [fresh_leads, file_format, template]
+- `20261006-22` Do not reuse old leads database · forbids [launch,enable] on [old_leads, database]
+- `20261006-25` Do not contact Ola directly for lead validation email changes · forbids [contact] on [ola, kasia, communication, email]
+- `20261006-32` Do not implement after-hours agent without Kasia's explicit approval · forbids [launch,enable] on [after_hours, agent, kasia] · lifted by Kasia Malinowska
+- `20261006-45` Agent must not sell used cars · forbids [build,launch] on [used_cars, sales_pitch, agent_script] · lifted by Kasia Malinowska
+- `20261006-46` Blackout window for new launches during Kasia's vacation (Oct 19-23, 2026) · forbids [launch] on [kasia, vacation, new_launches, fresh_leads, intro_text] · 2026-10-19..2026-10-23 · lifted by Kasia Malinowska
+- `20261006-49` Do not enter agent settings in panel · forbids [change_config,launch,enable] on [agent_settings, panel] · lifted by Kasia
+- `20261006-56` Do not launch Opel campaigns without Kasia's confirmation · forbids [launch] on [opel, campaigns, paweł, kasia] · lifted by Kasia
+- `20261006-76` Paweł cannot approve Opel or intro text changes · forbids [launch,change_config] on [paweł, kasia_malinowska, approval, opel_campaign, intro_text] · lifted by kasia_malinowska
 
-## Decisions — not doing / parked (18)
-- `20261006-15` **parked** · Defer shifting dialing attempts based on peak times
-- `20261006-19` **parked** · Reformat lead validation email to show model and location at the top
-- `20261006-22` **parked** · Make 'interested' dashboard tile clickable to filter contact list
-- `20261006-24` **parked** · Implement automated weekly email report for Paweł
-- `20261006-25` **parked** · Develop after-hours agent for sales, parts, and general inquiries (parked until 2026-11-01)
-- `20261006-45` **parked** · Do not launch new script versions this week
-- `20261006-46` **declined** · Do not investigate agent asking for model twice without recording
-- `20261006-47` **declined** · Do not send test recording for updated Włocławek address
-- `20261006-49` **parked** · Postpone shifting call attempts to lunch break
-- `20261006-50` **parked** · Postpone launching lead validation for Opel
-- `20261006-52` **declined** · Do not send file template for fresh leads
-- `20261006-53` **declined** · Do not reuse old lead database
-- `20261006-54` **declined** · Do not act on Ola's email issue without specific case details
-- `20261006-55` **parked** · Postpone changes to lead validation email format
-- `20261006-57` **parked** · Postpone after-hours agent service
-- `20261006-62` **parked** · Reformat email content for sales leads
-- `20261006-64` **parked** · Reorder columns in contact list to show surname after status
-- `20261006-65` **parked** · Implement after-hours agent functionality
+## Decisions — not doing / parked (9)
+- `20261006-06` **declined** · Agent asks about model twice in a conversation
+- `20261006-18` **declined** · Do not change agent call attempt timing
+- `20261006-24` **parked** · Redesign lead validation email format
+- `20261006-27` **parked** · Enable clicking 'zainteresowani' tile to filter contact list
+- `20261006-29` **parked** · Implement automated weekly email report for Paweł
+- `20261006-30` **parked** · Develop after-hours agent for sales and BOK inquiries
+- `20261006-37` **parked** · Implement SMS follow-up for unanswered calls
+- `20261006-51` **declined** · Decline to investigate agent asking for model twice without recording
+- `20261006-66` **parked** · Defer investigation of incorrect lead qualification without details
 
-## Superseded within the call (14)
-- `20261006-01` ~~Agent intro does not allow client to interrupt~~ → `20261006-02` Test two versions of agent introduction script for Toruń and Włocławek
-- `20261006-08` ~~Notify client when Włocławek address is updated~~ → `20261006-07` Notify Kasia Malinowska about Włocławek address update and do not send test recording
-- `20261006-11` ~~Adjust agent dialing hours for weekdays and Saturday~~ → `20261006-12` Adjust agent dialing hours for weekdays (09:00-19:00) and Saturday (09:00-15:00)
-- `20261006-48` ~~Keep call retry limit at 5 attempts~~ → `20261006-10` Maintain 5-attempt dialing limit
-- `20261006-56` ~~Communicate only with Kasia regarding Ola's email issues~~ → `20261006-20` Communicate only with Kasia Malinowska, not Ola
-- `20261006-58` ~~Do not activate after-hours agent service without Kasia's confirmation~~ → `20261006-27` Do not implement after-hours agent without Kasia Malinowska's explicit approval
-- `20261006-59` ~~Do not add used car sales to agent script~~ → `20261006-39` Agent must not sell or offer used cars
-- `20261006-60` ~~Blackout window for new launches during Kasia's vacation~~ → `20261006-40` Blackout window for new launches during Kasia's vacation
-- `20261006-61` ~~Paweł does not approve Opel or intro text changes~~ → `20261006-41` Paweł cannot approve Opel campaigns or intro text changes
-- `20261006-63` ~~Communicate only with Kasia Malinowska for all matters~~ → `20261006-20` Communicate only with Kasia Malinowska, not Ola
-- `20261006-66` ~~Do not believe claims that after-hours agent is active from Tuesday~~ → `20261006-27` Do not implement after-hours agent without Kasia Malinowska's explicit approval
-- `20261006-68` ~~Do not propose used cars when customer declines~~ → `20261006-39` Agent must not sell or offer used cars
-- `20261006-70` ~~No new launches during Kasia's vacation~~ → `20261006-40` Blackout window for new launches during Kasia's vacation
-- `20261006-71` ~~Paweł cannot approve Opel or intro script changes~~ → `20261006-41` Paweł cannot approve Opel campaigns or intro text changes
+## Superseded within the call (26)
+- `20261006-09` ~~Send test recording to confirm Włocławek address update~~ → `20261006-52` Do not send test recording for Włocławek address update
+- `20261006-36` ~~Provide count of erroneous double calls~~ → `20261006-35` Deduct charges for erroneous double calls
+- `20261006-42` ~~Use Peugeot 208 sale as success story in meeting with Paweł~~ → `20261006-16` Use Peugeot 208 success story without company name
+- `20261006-50` ~~Do not launch new agent intro versions this week~~ → `20261006-05` Do not launch new agent intro versions this week
+- `20261006-52` ~~Do not send test recording for Włocławek address update~~ → `20261006-09` Send test recording to confirm Włocławek address update
+- `20261006-53` ~~Keep agent retry limit at 5 attempts~~ → `20261006-12` Keep agent call attempt limit at five
+- `20261006-54` ~~Defer shifting call attempts to lunch break~~ → `20261006-18` Do not change agent call attempt timing
+- `20261006-55` ~~Defer launching Opel campaigns~~ → `20261006-19` Do not enable Opel campaigns
+- `20261006-57` ~~Do not launch old lead database again~~ → `20261006-22` Do not reuse old leads database
+- `20261006-58` ~~Do not send file template for fresh leads~~ → `20261006-21` Do not send file template for fresh leads
+- `20261006-59` ~~Defer new email format for sales team~~ → `20261006-24` Redesign lead validation email format
+- `20261006-60` ~~Do not contact Ola directly~~ → `20261006-25` Do not contact Ola directly for lead validation email changes
+- `20261006-61` ~~Defer after-hours sales agent project~~ → `20261006-30` Develop after-hours agent for sales and BOK inquiries
+- `20261006-62` ~~Do not activate after-hours agent without Kasia's confirmation~~ → `20261006-32` Do not implement after-hours agent without Kasia's explicit approval
+- `20261006-63` ~~Defer sales team training on statuses~~ → `20261006-44` Schedule training for sales team on lead statuses
+- `20261006-64` ~~Agent must not sell used cars or other products~~ → `20261006-45` Agent must not sell used cars
+- `20261006-65` ~~Blackout window for new launches during Kasia's vacation~~ → `20261006-46` Blackout window for new launches during Kasia's vacation (Oct 19-23, 2026)
+- `20261006-67` ~~Display model and salon at top of validation email~~ → `20261006-24` Redesign lead validation email format
+- `20261006-68` ~~Communicate only with Kasia Malinowska~~ → `20261006-25` Do not contact Ola directly for lead validation email changes
+- `20261006-69` ~~Enable clicking dashboard tiles to filter contact list~~ → `20261006-27` Enable clicking 'zainteresowani' tile to filter contact list
+- `20261006-70` ~~Allow reordering columns in contact list~~ → `20261006-28` Reorder columns in contact list to show surname after status
+- `20261006-71` ~~Automate weekly email reports for Paweł~~ → `20261006-29` Implement automated weekly email report for Paweł
+- `20261006-72` ~~Implement after-hours agent for sales, parts, and general inquiries~~ → `20261006-30` Develop after-hours agent for sales and BOK inquiries
+- `20261006-73` ~~Do not activate after-hours agent without Kasia's explicit approval~~ → `20261006-32` Do not implement after-hours agent without Kasia's explicit approval
+- `20261006-74` ~~Agent should not sell used cars~~ → `20261006-45` Agent must not sell used cars
+- `20261006-75` ~~Blackout window for new launches during Kasia's vacation~~ → `20261006-46` Blackout window for new launches during Kasia's vacation (Oct 19-23, 2026)
 
 ## Needs a human check (0)
 
 ## Warnings
-- dedupe: 20261006-08 'Notify client when Włocławek address is updated' merged into 20261006-07 'Notify Kasia Malinowska about Włocławek address update' (72)
-- dedupe: 20261006-60 'Blackout window for new launches during Kasia's vacation' merged into 20261006-40 'Blackout window for new launches during Kasia's vacation' (76)
-- dedupe: 20261006-61 'Paweł does not approve Opel or intro text changes' merged into 20261006-41 'Paweł cannot approve Opel campaigns or intro text changes' (72)
-- dedupe: 20261006-70 'No new launches during Kasia's vacation' merged into 20261006-40 'Blackout window for new launches during Kasia's vacation' (71)
-- commitment: 20261006-21 'Fix 'interested' filter on contact list' downgraded to will_look_into (only client-side quotes)
-- commitment: 20261006-68 'Do not propose used cars when customer declines' downgraded to no_commitment (only client-side quotes)
-- authority: Paweł cannot approve 'brands' (20261006-16 can only be lifted by Kasia Malinowska)
+- recap check: date not backed by any item: '15 października'
+- dedupe: 20261006-36 'Provide count of erroneous double calls' merged into 20261006-35 'Deduct charges for erroneous double calls' (80)
+- dedupe: 20261006-42 'Use Peugeot 208 sale as success story in meeting with Paweł' merged into 20261006-16 'Use Peugeot 208 success story without company name' (76)
+- dedupe: 20261006-52 'Do not send test recording for Włocławek address update' merged into 20261006-09 'Send test recording to confirm Włocławek address update' (71)
+- dedupe: 20261006-71 'Automate weekly email reports for Paweł' merged into 20261006-29 'Implement automated weekly email report for Paweł' (76)
+- dedupe: 20261006-75 'Blackout window for new launches during Kasia's vacation' merged into 20261006-46 'Blackout window for new launches during Kasia's vacation' (79)
+- commitment: 20261006-11 'Agent calls twice after short disconnect' downgraded to will_look_into (only client-side quotes)
+- commitment: 20261006-26 'Fix 'zainteresowany' filter on contact list' downgraded to will_look_into (only client-side quotes)

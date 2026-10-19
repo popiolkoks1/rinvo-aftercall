@@ -3,56 +3,51 @@ Subject: Podsumowanie rozmowy z 6 października 2026
 
 Cześć Kasiu,
 
-Poniżej znajdziesz podsumowanie naszej dzisiejszej rozmowy:
+Dziękuję za dzisiejszą rozmowę. Poniżej podsumowanie naszych ustaleń:
 
 Co zrobimy:
-- Zaktualizujemy adres salonu we Włocławku na Toruńską 120 w bazie wiedzy agenta. Powiadomimy Cię o tym dzisiaj.
-- Naprawimy błąd, przez który agent oddzwania natychmiast po rozłączeniu się klienta w ciągu 3 sekund.
-- Skorygujemy godziny dzwonienia agenta: w dni powszednie 09:00-19:00, w soboty 09:00-15:00.
-- Zaktualizujemy bazę wiedzy agenta o nową godzinę zamknięcia salonów w soboty (15:00) dla Torunia i Włocławka.
-- Marek Rewoliński wyśle przypomnienie o przesłaniu tekstów wprowadzenia agenta, jeśli nie otrzymamy ich do czwartku 8 października.
-- Marek Rewoliński prześle Ci cennik SMS-ów i przykładowy tekst do piątku 9 października.
-- Marek Rewoliński przygotuje ściągawkę dla zespołu sprzedaży dotyczącą statusów leadów.
-- Marek Rewoliński umówi 30-minutowe spotkanie z Pawłem, aby omówić integrację CRM i możliwości Rinvo, do 15 października.
-- Michał wystawi skorygowaną fakturę za wrzesień z poprawną nazwą firmy do 16 października.
-- Wyjaśnimy politykę rozliczania połączeń trwających poniżej 3 sekund.
-- Zidentyfikujemy i zwrócimy środki za błędne podwójne połączenia agenta.
-- Prześlemy Ci liczbę przypadków błędnych podwójnych połączeń.
-- Będziemy utrzymywać limit 5 prób połączeń na leada.
-- Nie będziemy uruchamiać kampanii Opel.
-- Agent nie będzie sprzedawać samochodów.
-- Nie będziemy uruchamiać walidacji leadów dla marki Opel bez Twojego potwierdzenia.
-- Nie będziemy wysyłać szablonu pliku dla świeżych leadów.
-- Nie będziemy ponownie wykorzystywać starej bazy leadów.
+- Zaktualizujemy adres salonu w Włocławku (Toruńska 120) oraz godziny otwarcia w soboty do 15:00 dla Torunia i Włocławka w bazie wiedzy agenta. Powiadomimy Cię, gdy to zrobimy.
+- Utrzymamy limit pięciu prób połączeń agenta.
+- Zmienimy godziny dzwonienia agenta na dni powszednie 09:00-19:00 i soboty 09:00-15:00. W niedziele agent nie będzie dzwonił.
+- Skorygujemy fakturę za wrzesień na „Auto Tama Toruń sp. z o.o.” do 16 października.
+- Potwierdzimy logikę naliczania opłat za krótkie połączenia.
+- Odliczymy opłaty za błędne podwójne połączenia, jeśli to nasz błąd.
+- Wyślemy cennik SMS-ów i przykładowy tekst do czwartku 9 października.
+- Przygotujemy ściągawkę ze statusami leadów dla zespołu sprzedaży.
+- Zaplanujemy krótkie szkolenie online dla zespołu sprzedaży na temat statusów leadów, gdy aktywne będą świeże leady.
+- Agent nie będzie proponował używanych samochodów.
+- Zmienimy godziny dzwonienia agenta w soboty na 9:00-15:00.
+- Zaktualizujemy bazę wiedzy agenta o nowy czas zamknięcia w soboty o 15:00.
 
-Co sprawdzimy/rozważymy:
-- Zbadamy problem, w którym agent pyta o model samochodu dwukrotnie (potrzebujemy nagrania lub ID połączenia).
-- Rozważymy wdrożenie testów A/B dla skryptów agenta w panelu klienta.
-- Rozważymy wdrożenie funkcji wysyłania SMS-ów po nieudanych połączeniach.
-- Rozważymy przeniesienie kolumny „nazwisko” obok „statusu” na liście kontaktów, jeśli będziemy pracować nad listą kontaktów w tym tygodniu.
-- Rozważymy zautomatyzowany cotygodniowy raport e-mail dla Pawła.
+Co sprawdzimy:
+- Czy agent ignoruje początkową wypowiedź klienta i kontynuuje intro.
+- Możliwość skrócenia początkowej formuły agenta, aby szybciej zadawał pytanie.
+- Problem z podwójnym dzwonieniem agenta po krótkim rozłączeniu.
+- Działanie filtra „zainteresowany” na liście kontaktów.
+- Zmienimy kolejność kolumn na liście kontaktów, aby nazwisko pojawiało się po statusie, gdy będziemy pracować nad poprawką filtra.
+- Wdrożenie funkcji SMS-ów po nieodebranych połączeniach.
 
 Na co czekamy od Ciebie:
-- Teksty dwóch wersji skryptu wprowadzenia agenta. Są one potrzebne do uruchomienia testów A/B (planowany start 12 października).
-- Plik ze świeżymi leadami z ostatniego miesiąca (ze strony internetowej i Facebooka) do poniedziałku 12 października. Plik powinien zawierać numer telefonu i określać Toruń lub Włocławek.
-- Konkretny przykład błędnie sklasyfikowanego leada (np. zapytanie serwisowe jako lead sprzedażowy) do zbadania problemu z e-mailem Oli.
-- Potwierdzenie daty/godziny spotkania z Pawłem.
-- Ustalenie daty krótkiego (15-minutowego) szkolenia online dla Oli i zespołu sprzedaży na temat statusów leadów (po wprowadzeniu świeżych leadów).
-- Numery telefonów do pomocy i listę wymaganych pól danych dla agenta po godzinach.
+- Dwie wersje tekstu intro agenta do testów A/B do czwartku 8 października.
+- Plik ze świeżymi leadami z ostatniego miesiąca do poniedziałku 12 października.
+- Przykład e-maila, gdzie lead serwisowy został błędnie sklasyfikowany jako sprzedażowy.
+- Potwierdzenie dostępności Pawła na spotkanie w czwartek 15 października o 10:00.
+- Zgodę Pawła na użycie nazwy firmy w historii sukcesu.
 
-Czego nie robimy lub odkładamy na później:
-- Nie będziemy badać problemu podwójnego pytania o model bez nagrania.
-- Nie będziemy wysyłać nagrania testowego dla zaktualizowanego adresu we Włocławku.
-- Nie będziemy uruchamiać nowych wersji skryptu w tym tygodniu.
-- Przesunięcie prób połączeń na godziny szczytu (około 12:00-13:00 i po 17:00) jest odłożone do czasu przetworzenia świeżych leadów.
-- Zmiany w formacie e-maila walidacji leada (model i salon na górze) są odłożone do czasu przetworzenia świeżych leadów.
-- Funkcja klikalnego kafelka „zainteresowani” na pulpicie nawigacyjnym jest odłożona.
-- Rozwój agenta po godzinach (sprzedaż, części, zapytania ogólne) jest odłożony do 1 listopada 2026.
-- Nie będziemy uruchamiać nowych kampanii ani funkcji między 19 a 23 października 2026 (Twój urlop).
-- Paweł nie może zatwierdzać kampanii Opel ani zmian w tekście wprowadzenia agenta.
-- Agent nie może sprzedawać ani oferować używanych samochodów.
-- Nie będziemy wchodzić w ustawienia agenta w panelu.
-- Nie będziemy działać w sprawie problemu z e-mailem Oli bez konkretnych szczegółów sprawy.
+Czego nie robimy lub odkładamy:
+- Nie uruchomimy nowych wersji intro agenta w tym tygodniu.
+- Nie będziemy badać podwójnego pytania agenta o model bez nagrania.
+- Nie zmieniamy czasu prób połączeń agenta.
+- Nie uruchamiamy kampanii Opel.
+- Nie wysyłamy szablonu pliku dla świeżych leadów.
+- Nie używamy starej bazy danych leadów.
+- Nie będziemy wprowadzać zmian w ustawieniach agenta w panelu.
+- Nie uruchamiamy nowych kampanii, wersji skryptów ani innych inicjatyw skierowanych do klienta w dniach 19-23 października 2026.
+- Wracamy do tematu przeprojektowania formatu e-maila walidacyjnego po przetworzeniu świeżych leadów.
+- Wracamy do tematu automatycznego raportu e-mailowego dla Pawła.
+- Wracamy do tematu agenta po godzinach, gdy Kasia wyraźnie potwierdzi powrót do tematu.
+- Wracamy do tematu klikania kafelka „zainteresowani” w celu filtrowania listy kontaktów.
+- Wracamy do tematu błędnej kwalifikacji leada bez szczegółów.
 
 Pozdrawiam,
 Marek Rewoliński

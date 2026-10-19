@@ -1,0 +1,22 @@
+BrightSmile Dental Clinics - weekly check-in with Rinvo
+Speaker 1 = Tom Harper (Rinvo), Speaker 2 = Priya Shah (BrightSmile, front desk manager)
+
+Speaker 1: Hi Priya, can you hear me okay?
+Speaker 2: Yes, all good. Quick one today, I have patients at half past.
+Speaker 1: Sure. How is the appointment reminder agent doing?
+Speaker 2: Mostly fine, but it keeps telling patients our Leeds clinic closes at 6pm. We moved to 7pm on weekdays last month.
+Speaker 1: That's on us, the knowledge base is stale. I'll update it to 7pm today.
+Speaker 2: Thanks. Also, when a patient says "cancel", the agent asks them to confirm three times. That's annoying people.
+Speaker 1: Do you have a call ID?
+Speaker 2: Yes, I'll email you two call IDs by Friday.
+Speaker 1: Great, I can't really dig in without them, so I'll wait for those.
+Speaker 2: One more thing: could the agent offer the next free slot when someone cancels? Like a rebooking flow.
+Speaker 1: We don't have that today. I'll log it as a feature request, no date yet.
+Speaker 2: Fine. And please don't start calling the Manchester clinic patients yet. Our manager, Dr. Lewis, needs to sign that off first.
+Speaker 1: Understood, Manchester stays off until you confirm Dr. Lewis approved it.
+Speaker 2: Also I'm off from the 2nd to the 9th of November, so nothing new goes live while I'm away.
+Speaker 1: Noted, no launches that week.
+Speaker 2: Last thing, the October invoice had the wrong VAT number. Our accounts team needs a corrected one.
+Speaker 1: Sorry about that. I'll pass it to our finance person today, corrected invoice next week.
+Speaker 2: Perfect. Talk next Tuesday.
+Speaker 1: Bye Priya.

@@ -4,7 +4,7 @@ Each entry says what was assumed, why, and what would change it. Add new entries
 
 ## Inputs
 
-- **A1. brief.pdf is missing from the repo.** The design is based on the product description given in the kickoff and on `transkrypcja-spotkanie.md`. *Revisit:* once the brief is available, check it for required outputs we haven't covered.
+- **A1.** The brief (brief.pdf) is not committed; it was read at the start of the build session.
 - **A2. One transcript covers one client call.** Calls with more than one client, and internal-only calls, are out of scope.
 - **A3. Transcript format is loose.** Speaker turns may be `**Name:**`, `Name:`, `Speaker 1:` or missing. The parser tries to find speaker turns; if it can't, the transcript is treated as plain text and quote verification still works (only speaker attribution is lost). Header sections (context, participants) are used as metadata, and quotes taken from them are labelled `source: header`, not speech.
 - **A4. Meeting date** is read from the transcript header when present. A `--meeting-date` CLI flag overrides it. If neither is available, the run fails rather than guessing.

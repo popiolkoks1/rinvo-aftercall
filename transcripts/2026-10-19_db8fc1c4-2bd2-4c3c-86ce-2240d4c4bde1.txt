@@ -32,3 +32,16 @@ is shouuldnt overide, it should append at the end
 ===== ASSISTANT (2026-10-19 10:22:34) =====
 [tool: Bash] Switch export to append-only and test twice
 
+===== ASSISTANT (2026-10-19 10:22:40) =====
+The export now adds to the end of each file instead of overwriting it. Each run appends only the messages that haven't been exported yet. Text already in the file is never changed or removed.
+
+I tested it by running the export twice in a row:
+- The first run wrote 5 messages for this conversation and 6 for another session in this project.
+- The second run added just 1 message to this conversation: the one I had sent between the two runs. Nothing was duplicated.
+
+To know which messages are already saved, the export keeps a small record in `transcripts/.export-state.json`. If you delete it, the next run will add every message again and you'll get duplicates.
+
+I made the change in [export_transcripts.py](.claude/skills/export-transcript/export_transcripts.py) and updated [SKILL.md](.claude/skills/export-transcript/SKILL.md) to match.
+
+Each conversation still gets its own file. If you meant one single file that every conversation is added to, I can switch it to that.
+

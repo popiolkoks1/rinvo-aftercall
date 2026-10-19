@@ -65,6 +65,7 @@ All runs used `gemini-2.5-flash`, the Auto Tama transcript, and as-of 2026-10-19
 | | 2 | 26/29 (90%) | 13/15 | 89 s |
 | | 3 | 27/29 (93%) | 15/15 | 112 s |
 | Final (B + output-size cuts, recap leak retry, authority rule) | 1 | 29/29 (100%) | 12/15 | not measured* |
+| Final + recap accuracy rules (the committed `runs/2026-10-06_auto-tama`) | 1 | 29/29 (100%) | 13/15 | 71 s |
 
 \* The final code got only one complete run, and its extraction responses came from cache. This is an honest gap: the three-run check was interrupted.
 
@@ -95,7 +96,26 @@ The per-run files for batches A and B were lost when an interrupted command dele
 - **The dedupe threshold** (detail similarity ≥ 70) was calibrated on a single run.
 - **Speed:** tail latency depends on output size. There is no request hedging or timeout yet.
 - **Approve/Reject in `report.html` are not saved**. They change only the page. Committing goes through `aftercall approve`.
-- **Not built:** the Streamlit UI and a second, different-industry transcript.
+- **The recap still has errors after the accuracy rules** (committed [`recap_email.md`](runs/2026-10-06_auto-tama/drafts/recap_email.md), checked by hand). What's fixed: the status filter and the double-call bug are under "Co sprawdzimy", Saturday 9–15 is set for both salons, and the refund keeps "jeśli to nasz błąd". What's still wrong:
+  - **37 bullets**, against a limit of 20, with duplicates (Saturday hours appear three times).
+  - **Dates Marek didn't say:** the invoice "do 16 października" (he said "w przyszłym tygodniu") and the SMS price "do czwartku 9 października" (he said "w tym tygodniu", and 9 October is a Friday).
+  - **"i przykładowy tekst"** for the SMS, though Kasia writes that text herself.
+  - **Leftovers that break the rules:** Paweł's approval of the company name, the in-call "ustawienia agenta" remark, Kasia in the third person, and a garbled last line.
+  
+  The recap is a draft for a human to edit, never sent automatically. Recap checks now go to `drafts/recap_checks.md` instead of the email body.
+- **Not built:** the Streamlit UI.
+
+## Runs on another call
+
+[`examples/brightsmile_call.txt`](examples/brightsmile_call.txt) is a made-up 20-line English call: a dental clinic, `Speaker 1:` / `Speaker 2:` labels and an appointment-reminder agent. It ran with **no code or config changes**, in 35 s uncached (40 s in an earlier run). Output: [`runs/2026-10-20_brightsmile-dental-clinics/`](runs/2026-10-20_brightsmile-dental-clinics/).
+
+```bash
+uv run aftercall run examples/brightsmile_call.txt --date 2026-10-20 --as-of 2026-10-21
+```
+
+It caught the Leeds hours fix, the call IDs to wait for, the rebooking request, the VAT invoice, the Manchester ban and the November blackout. Known bugs:
+- **The authority rule can get the approver backwards.** In one of two runs it warned "Dr. Lewis cannot approve 'manchester_clinic_calling'", though Dr. Lewis is exactly who must sign it off. The committed run gets it right ("lifted by Dr. Lewis"). The rule ("only the person who set a guardrail can lift it") was tuned on the Auto Tama call.
+- **A feature request went to the config checklist.** The rebooking feature was routed to "Config / KB / launch checklist" as well as the product backlog. It belongs only in the backlog.
 
 ## Next steps
 
