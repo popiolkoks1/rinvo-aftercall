@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Short commands for aftercall. Usage: ./ac help
+set -euo pipefail
+cd "$(dirname "$0")"
+
+latest() { ls -dt runs/*/ 2>/dev/null | head -1 | sed 's:/$::'; }
+
+run() {
+  local f="$1"; shift
+  local out
+  # Meeting date comes from the transcript header; if there is none, use today.
+  out=$(uv run aftercall run "$f" "$@" 2>&1) || true
+  if grep -q "No meeting date found" <<<"$out"; then
+    echo "· no date in the file, using today ($(date +%F))"
+    out=$(uv run aftercall run "$f" --date "$(date +%F)" "$@" 2>&1) || true
+  fi
+  echo "$out"
+  local dir
+  dir=$(sed -n 's/^→ outputs in \(.*\)\/$/\1/p' <<<"$out" | tail -1)
+  [ -n "$dir" ] && open "$dir/report.html"
+}
+
+case "${1:-help}" in
+  run)     shift; [ $# -ge 1 ] || { echo "usage: ./ac run <file> [--date YYYY-MM-DD]"; exit 1; }; run "$@" ;;
+  paste)   shift; f="pasted_$(date +%H%M%S).txt"; pbpaste > "$f"; echo "· clipboard saved to $f"; run "$f" "$@" ;;
+  demo)    run transkrypcja-spotkanie.md --date 2026-10-06 --as-of 2026-10-19 ;;
+  demo2)   run examples/brightsmile_call.txt --date 2026-10-20 --as-of 2026-10-21 ;;
+  open)    d="${2:-$(latest)}"; uv run aftercall view "$d" ;;
+  approve) d="${2:-$(latest)}"; uv run aftercall approve "$d" --all ;;
+  memory)  [ $# -ge 2 ] || { ls data/clients/*.json 2>/dev/null | xargs -n1 basename 2>/dev/null | sed "s/.json$//" | grep . || echo "no clients yet (run ./ac approve first)"; exit 0; }; uv run aftercall client show "$2" ;;
+  *) cat <<'EOF'
+./ac run <file>      analyse a transcript (.md/.txt) and open the review page
+./ac paste           analyse a transcript copied to the clipboard
+./ac demo            the Auto Tama call (cached, instant)
+./ac demo2           the English dental-clinic call
+./ac open [run_dir]  open the review page of the latest (or given) run
+./ac approve [dir]   approve all verified items of the latest run into client memory
+./ac memory [slug]   list clients, or show one client's memory
+
+Add --no-cache to run/paste to force fresh Gemini calls.
+EOF
+  ;;
+esac

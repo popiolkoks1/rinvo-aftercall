@@ -45,6 +45,8 @@ uv run aftercall run transkrypcja-spotkanie.md --date 2026-10-06 --as-of 2026-10
 uv run aftercall view runs/2026-10-06_auto-tama   # opens the review page in a browser
 ```
 
+Shortcuts (`./ac help`): `./ac run <file>` analyses any transcript and opens the review page (it uses today's date if the file has none), `./ac paste` does the same for a transcript in the clipboard, `./ac approve` approves the latest run, and `./ac demo` / `./ac demo2` replay the two example calls.
+
 Other commands:
 - `aftercall approve <run_dir> --all | --ids …` commits approved items to client memory.
 - `aftercall eval <run_dir> --gold eval/gold/auto-tama.yaml` scores a run.
