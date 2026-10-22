@@ -45,7 +45,26 @@ uv run aftercall run transkrypcja-spotkanie.md --date 2026-10-06 --as-of 2026-10
 uv run aftercall view runs/2026-10-06_auto-tama   # opens the review page in a browser
 ```
 
-Shortcuts (`./ac help`): `./ac run <file>` analyses any transcript and opens the review page (it uses today's date if the file has none), `./ac paste` does the same for a transcript in the clipboard, `./ac approve` approves the latest run, and `./ac demo` / `./ac demo2` replay the two example calls.
+### Quick commands (`./ac`)
+
+After setup, `./ac` wraps everything in short commands:
+
+| Command | What it does |
+|---|---|
+| `./ac run file.txt` | Analyses any transcript (.md/.txt) and **opens the review page in the browser** |
+| `./ac paste` | The same, for a transcript copied to the clipboard |
+| `./ac demo` | The Auto Tama call (from cache, a few seconds) |
+| `./ac demo2` | The English dental-clinic call |
+| `./ac open` | Opens the latest result |
+| `./ac approve` | Approves the latest result into client memory |
+| `./ac memory` | Lists the clients in memory; `./ac memory auto-tama` shows what is stored about one |
+| `./ac help` | This list |
+
+**To run it on a new call:** `./ac run file.txt`, or copy the text and run `./ac paste`. The review page opens on its own after about 40–80 s.
+
+- **The meeting date is optional.** If the file has none, `./ac` uses today's date.
+- **Add `--no-cache` at the end** to force fresh Gemini calls on a file that was already analysed, e.g. `./ac demo --no-cache`.
+- **`demo` and `demo2` overwrite the local files in `runs/`.** To restore the committed versions, run `git checkout -- runs`.
 
 Other commands:
 - `aftercall approve <run_dir> --all | --ids …` commits approved items to client memory.
